@@ -7,16 +7,12 @@
 \usepackage{amssymb, amsmath, amsthm, enumerate, verbatim, extarrows, marvosym, lmodern, stmaryrd, accents, bbm}
 
 \pagestyle{headings}
-\newtheorem{theorem}{Satz}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Korollar}
-\newtheorem{question}[theorem]{Frage}
-\newtheorem{remark}{Bemerkung}
 \renewcommand{\thetheorem}{\arabic{theorem}}
-\newtheorem*{theorem*}{Satz}
-\newtheorem*{lemma*}{Lemma}
-\newtheorem*{corollary*}{Korollar}
-\newtheorem*{remark*}{Bemerkung}
+%\newtheorem*{question}[theorem]{Frage}
+\newtheorem*{theorem}{Satz}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{corollary}{Korollar}
+\newtheorem*{remark}{Bemerkung}
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 \newtheorem*{example}{Beispiel}
@@ -44,24 +40,13 @@
 \newcommand{\TuL}{\operatorname{TuL}}
 \newcommand{\TuI}{\operatorname{TuI}}
 
-% \KOMAoptions{twocolumn}
-% \geometry{a2paper,top=2cm,bottom=2cm,textwidth=39cm}
-% \linespread{0.9}
-% \let\gelaber=\comment
-% \let\proof=\comment
-% \let\example=\comment
-% \let\convention=\comment
-% \let\question*=\comment
-% \let\preamble=\comment
-% \pagestyle{empty}
-
 \begin{document}
 \begin{preamble}
 \subject{Vorlesung aus dem Sommersemester 2013}
 \title{Transfinite Beweismethoden}
 \author{PD. Dr. Schuster}
 \date{}
-%\publishers{\small ge\TeX{}t von Chris Ittner}
+%\publishers{\small ge\TeX{}t von }
 
 \maketitle
 \thispagestyle{empty}
@@ -300,7 +285,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\end{proof}
 \end{theorem}
 
-\section{Allgemeine Abhängigkeit}
+\section*{Allgemeine Abhängigkeit}
 
 \begin{definition}
 	Es sei $S$ eine Menge, sowie $\lhd\subseteq S\times \mathcal P(S)$.
@@ -358,8 +343,75 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 		\item $R\subseteq S$ komm. Ringe; für $U\subseteq S$ sei $R[U]$ die {\em Ringadjunktion} von $U$ an $R$ in $S$, d.h.
 			\[ R[U]= \bigcup_{n\ge 0} \{ f(u_1,\ldots,u_n)\colon f\in R[X_1,\ldots,X_n]; u_1,\ldots, u_n \in U\} \]
 			$U^\lhd = \bar{ R[U] }^S$ ganzer Abschluß von $R[U]$ in $S$, d.h. $a\lhd U\iff a^n = r_1a^{n-1}+\ldots+r_{n-1}^a + r_n$ für geeignete $n\ge 1$; $r_1,\ldots,r_n\in R[U]$.
+			
+			Dann: $\lhd$ finitäre Überdeckungsrelation.
+			$R, S$ Körper, $R(U)$ statt $R[U]\to \lhd$ Abhängigkeitsrelation und ``$\lhd$-(un)abhängigkeit'' ist ``algebraisch (un)abhängig''.
+			Siehe B.L. van der Warden, (Moderne) Algebra I, §64.
 	\end{enumerate}
 \end{example}
+
+\begin{definition}
+	Nun sei $\lhd$ wieder eine allgemeine Abhängigkeitsrelation.
+	$U$ {\em erzeugt} $S$, wenn $S\lhd U$, d.h. $\forall_{b\in S}(b\lhd U)$.
+	$U$ {\em Basis}, wenn $U$ unabhängig, und $U$ erzeugt $S$.
+	
+	In den Beispielen (b) und (c) ist eine Basis eine Vektorraumbasis bzw. eine Tanszendenzbasis.
+	$U$ ist {\em maximal unabhängig} genau dann, wenn jedes $V\subseteq S$ mit $V\supsetneq U$ abhängig ist (*), sowie $U$ unabhängig ist.
+\end{definition}
+
+\begin{lemma}
+	$U$ maximal unabhängig $\iff$ $U$ Basis
+	\begin{proof}
+		``$\Rightarrow$`` (gilt i.a. nicht für $\lhd$ nur Überdeckungsrelation):
+		Zeige: (*) $\land$ $S\not\lhd U \to U \text{ abhängig}$.
+		Nehme $b\in S$ mit $b\not\lhd U$.
+		Speziell $b\not\it U$, d.h. $U\subsetneq U\cup \{b\}$.
+		Nach (*) ist $U\cup \{b\}$ abhängig, d.h. es gibt $a\in U\cup \{b\}$ mit $a\lhd (U\cup \{b\})-\{a\}$.
+		Sofort folgt $a\neq b$ [$a=b\to b\lhd U$ $\lightning$].
+		Also $a\lhd (U-\{a\})\cup\{b\}$.
+		Nach Abhängigkeitseigenschaft ist dann $a\lhd U-\{a\}$, damit $U$ abhängig, da ja $a\in U$ wegen $a\neq b$, 
+		oder $b\lhd (U-\{a\})\cup\{a\}$, d.h. $b\lhd U$. $\lightning$.
+
+		``$\Leftarrow$'': Nur zu Zeigen: (*).
+		Ist $V\supsetneq U$, etwa $b\in V-U$, so ist $U-\{b\}=U$ und $b\lhd U$, also $b\lhd U-\{b\}$ und damit $b\lhd V-\{b\}$, also $V$ abhängig.
+	\end{proof}
+\end{lemma}
+
+% Mail an pschust@maths.leeds.ac.uk Betreff: transfinit
+
+\begin{theorem}
+	Zu jedem unabhängigen $U\subseteq S$ gibt es eine Basis $W$ mit $W\supseteq U$.
+	\begin{proof}[Beweis mit ZL]
+		Verwende obiges Lemma.
+		Es sei $G=E\cap F$, wobei $E=\{V\subseteq S\colon V\supseteq U\}$ und 
+		$F = \{V\subseteq S\colon V \text{unabhängig}\}$ ein maximales Element $W$ von $G$ ist die gewünschte Basis.
+		Zu Zeigen: $G\neq \emptyset$ und $G$ dcpo.
+		Nun ist $U\in G$.
+		Ist $D\subseteq G$ gerichtet, so ist $\bigcup D\in E$, da $D\neq \emptyset$, sowie $\bigcup D\in F$, da $F$ abgeschlossen, da $F$ von endl. Charakter (Lemma oben).
+	\end{proof}
+\end{theorem}
+
+\begin{gelaber}
+{\bf Typische Anwendung} $V$ Vektorraum, $x\in V$. 
+Dann gilt: $\forall_{\varphi in V^*} ( \varphi(x)=0)\to x=0$.
+\begin{proof}[Indirekter Beweis, mit ZL]
+	Wäre $x\neq 0$, so wäre $U=\{x\}$ unabhängig, also gäbe es (Satz) eine Basis $W$ von $V$ mit $W\supseteq U$; d.h. $x\in W$ 
+	Definiere $\varphi \in V*$ durch .. [2 Zeilen]
+\end{proof}
+
+
+\end{gelaber}
+
+
+
+
+
+stephan.kulla@campus.lmu.de
+sswunk@googlemail.com
+
+
+
+
 
 
 

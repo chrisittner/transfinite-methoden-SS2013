@@ -34,6 +34,7 @@
 \newcommand{\TI}{\operatorname{TI}}
 \newcommand{\TT}{\operatorname{TT}}
 \newcommand{\ZL}{\operatorname{ZL}}
+\newcommand{\CC}{\operatorname{CC}}
 \newcommand{\OI}{\operatorname{OI}}
 \newcommand{\Pow}{\operatorname{Pow}}
 \newcommand{\EM}{\operatorname{EM}}
@@ -49,9 +50,9 @@
 %\publishers{\small ge\TeX{}t von }
 
 \maketitle
-\thispagestyle{empty}
-\tableofcontents
-\clearpage
+%\thispagestyle{empty}
+%\tableofcontents
+%\clearpage
 \end{preamble}
 
 \setcounter{section}{0}
@@ -62,143 +63,145 @@
 
 \begin{gelaber}
 	\begin{enumerate}
-		\item A. Kertesz. Einführung in die Transfinite Algebra (main reference)
-		\item I. Kaplanski. Set Theory and Metric Spaces, AMS 2001
-		\item G. H. Moore. Zermelo's Axiom of Choice, Springer
-		\item T. Jech. The Axiom of Choice, North-Holland
-		\item H. Rubin, J. E. Rubin. Equivalents of the Axiom of Choice (I + II)
-		\item Erne einführung in die Ordinal...
-		\item H. Herrlich. Axoim of Choice
-		\item P. Howard, J.E. Rubin. Consequences of the Axiom of Choice
-		\item J.L. Bell, The Axiom of Choice
+		\item A. Kertesz, {\em Einführung in die Transfinite Algebra} (main reference)
+		\item I. Kaplanski. {\em Set Theory and Metric Spaces}, AMS 2001
+		\item G. H. Moore. {\em Zermelo's Axiom of Choice}, Springer
+		\item T. Jech. {\em The Axiom of Choice}, North-Holland
+		\item H. Rubin, J. E. Rubin. {\em Equivalents of the Axiom of Choice},  Vol. I + II
+		\item M. Erne. {\em Einführung in die Ordnungstheorie}, 1982
+		\item H. Herrlich. {\em Axiom of Choice}, Springer, 2006
+		\item P. Howard, J.E. Rubin. {\em Consequences of the Axiom of Choice}, AMS, 1998
+		\item J.L. Bell. {\em The Axiom of Choice}, College, 2009
 	\end{enumerate}
 \end{gelaber}
 
 \subsection*{History and Motivation}
 
 \begin{itemize}
-	\item 1883: Cantor needed a well-order of $\mathcal R$, and considered the existence of such order as a ``Denkgesetz''.
+	\item 1883: Cantor needed a well-order of $\mathbb R$, and considered the existence of such order as a ``Denkgesetz''.
 	\item 1904: Zermelo proves that every set can be well-ordered, ($\WO$). Zermelo used $\AC$.
 
 		$\ZF\vdash\AC\leftrightarrow\WO$
-	\item Peano (1890) in a paper about Diff. Eq. explicitly avoids to use CC by using instead an algorithmic proof.
-	\item $\ge$1904, Zermelo's paper proved? the so-called ``Grundlagenkrise''
-	\item 1905: Hamel proved with WO te existence of a basis for $\mathcal R$ as a $\mathcal Q$-vector space and he used this result to give the general solution of the functional equation $f(x+y)=f(x)+f(y)$ ($f\colon \mathcal R\to \mathcal R$)
-	\item WO made possible the use of transfinite induction ($\TI$).
-	\item Zorn (1935) put forward Zorn's Lemma, to make proofs shorter and more algebraic. (Kuratowski  already introduced ZL in 1922)
+	\item Peano (1890) in a paper about Diff. Eq. explicitly avoids to use $\CC$ by using an algorithmic proof instead.
+	\item $\ge$1904, Zermelo's paper prompted the so-called ``Grundlagenkrise''.
+	\item 1905: Hamel proved with $\WO$ the existence of a basis for $\mathbb R$ as a $\mathbb Q$-vector space and he used this result to give the general solution of the functional equation $f(x+y)=f(x)+f(y)$ ($f\colon \mathbb R\to \mathbb R$)
+	\item $\WO$ made possible the use of transfinite induction ($\TI$).
+	\item Zorn (1935) put forward Zorn's Lemma ($\ZL$), to make proofs shorter and more algebraic. (Kuratowski already introduced $\ZL$ in 1922)
 	\item Teichmüller (1939) and Tukey (1940), Teichmüller-Tukey Principle ($\TT$)
 	\item Of course we know $\AC$, $\TT$, $\ZL$, $\WO$ are equivalent.
 	\item Raoult (1988): {\em Open Induction} ($\OI$), equivalent to $\ZL$ and makes proofs even shorter.
 	\item Coquand, Bergen (2004): Dependent choice can be replaced by a combinatorial form of $\OI$.
 	\item $\AC$ is problematic from a constructive point of view. 
 
-	$\AC + \Pow\vdash \EM$ (Dizconescu, ~1970) ($\EM$ = Law of excluded middle ($\forall_x (P(x)\lor\neg P(x))$, $\Pow$ = Powerset axiom)
+	$\AC + \Pow\vdash \EM$ (Dizconescu, ~1970) ($\EM$ = Law of excluded middle ($\forall_x (P(x)\lor\neg P(x))$), $\Pow$ = Powerset axiom)
 	\item Gödel 1940: $\ZF \not\vdash \bot \to \ZF\not\vdash \neg \AC$
 	\item Cohen 1963: $\ZF \not\vdash \bot \to \ZF\not\vdash \AC$
 	\item $\OI$ is an alternative to $\AC$.
-	\item {\bf Hilbert's Programme (HP):} Justify the use of ideal objects (e.g. objects constructed by means of $\ZL$ or $\AC$) and transfinite methods.
-	Prove with finite methods, that the use of idealistic methods is consistent.
+	\item Hilbert's Programme (HP): Justify the use of ideal objects (e.g. objects constructed by means of $\ZL$ or $\AC$) and transfinite methods.
+		Prove with finite methods, that the use of idealistic methods is consistent.
 	\item Revised form of HP (Kreisel and Feferman): Eliminate the use of ideal objects and use only finite and constructive proof methods.
 	\item Successful for a considerable part of commutative algebra (Lombardi, Coquand)
 \end{itemize}
 
 {\bf Preliminaries (1).}
 \begin{itemize}
-	\item partial order $\le$ (reflexive, transitive, antisymmetric), $(X,\le)$ is a poset.
-	\item a chain, or total order or linear order is a partial order satisfying $x\le y\lor y\le x$
-	\item on a poset $(X,\le)$ we talk about minimal/maximal elements. e.g. $x$ is minimal in $X$ $\iff$ $\forall_{y\in X}(y\le x\to y=x)$
+	\item {\em Partial order} $\le$ (reflexive, transitive, antisymmetric), $(X,\le)$ is a {\em poset}.
+	\item A {\em chain}, or {\em total order} or {\em linear order} is a partial order satisfying $x\le y\lor y\le x$
+	\item On a poset $(X,\le)$ we talk about minimal/maximal elements. e.g. $x$ is {\em minimal} in $X$ $\iff$ $\forall_{y\in X}(y\le x\to y=x)$
 		or equiv. $\neg \exists_{y\in X}(y\le x \land y\neq x)$
-	\item $(X,\le)$ is a chain, $x$ is minimal (maximal), then we say: $x$ is the least (greatest) element.
-	\item $\le$ well-founded: every non-empty subset has a minimal element.
-	\item ...
+	\item $(X,\le)$ is a chain, $x$ is minimal (maximal), then we say: $x$ is the {\em least} ({\em greatest}) element.
+	\item $\le$ {\em well-founded}: every non-empty subset has a minimal element.
+	\item $\le$ {\em well-order}: $\le$ is well-founded linear order.
 	\item $\WO$: every set can be well-ordered.
 	\begin{example}
 		\begin{enumerate}[(i)]
-			\item $\mathcal N$ is well-ordered by $\le$
-			\item $\mathcal Q^0_+ = [0,+\infty)\cap \mathcal Q$. It is linearly ordered, has least element (0), but it's not well-founded. 
-				($s=(\sqrt[2], +\infty)\cap \mathcal Q$).
+			\item $\mathbb N$ is well-ordered by $\le$
+			\item $\mathbb Q^0_+ = [0,+\infty)\cap \mathbb Q$. It is linearly ordered, has least element (0), but it is not well-founded. 
+				($s=(\sqrt{2}, +\infty)\cap \mathbb Q$).
 			\item Transfinite Induction ($\TI$) on a poset $X$. Every progressive subset $S$ of $X$ equals $X$.
-				\[\underbrace[S-\text{progressive}]{\forall_x[\forall_{y<x}(y\in S)\to(x\in S)]}\to \underbrace[X=S]{\forall_x(x\in S)} \]
+				\[\underbrace{\forall_x[\forall_{y<x}(y\in S)\to(x\in S)]}_{S-\text{progressive}}\to \underbrace{\forall_x(x\in S)}_{X=S} \]
 			\item If $\le$ is well-founded order, then $\TI$ holds on $(X,\le)$.
 			[If $S$ progressive and $S\neq X$, then $R=X-S$ is non-empty and therefore it has a minimal element $x$, so that $x\in S$ since $S$ is progressive. $\lightning$.]
-			\item On $\mathcal N$, $\TI$ rewrites as: $\forall_n[\forall_{m<n}(m\in S)\to n\in S]\to \forall_n(n\in S)$.
+			\item On $\mathbb N$, $\TI$ rewrites as: $\forall_n[\forall_{m<n}(m\in S)\to n\in S]\to \forall_n(n\in S)$.
 		\end{enumerate}
 	\end{example}
 	\end{itemize}
 
-\begin{theorem}
-	Any linearly independent subset $S\in V$, when $V$ is a vector space over $\mathcal K$ can be extended to a base $S'\supset S$.
+\begin{theorem}[Hamel, 1905]
+	Any linearly independent subset $S\in V$, when $V$ is a vector space over $\mathbb K$ can be extended to a base $S'\supset S$.
 	\begin{proof}
-		Consider a well-order on $V$, $\langle V_\alpha\mid \alpha\le \bar\alpha\rangle$ ($\bar\alpha$ ordinal corresp to the well-order on $V$)
+		Consider a well-order on $V$, $\langle V_\alpha\mid \alpha\le \bar\alpha\rangle$ ($\bar\alpha$ ordinal corresp. to the well-order on $V$)
 		We can define a (partial) function $f\colon\bar\alpha\to V$:
-		$f(\alpha)$ = the least element of $V$ that is not a linear combination of $f(\beta)$ with $\beta<\alpha$ in $S$.
-		...
+		\[\text{$f(\alpha)$ = the least element of $V$ that is not a linear combination of $f(\beta)$ with $\beta<\alpha$ in $S$}\]
+		Of course $f$ is not defined, if such an element does not exist.
 		\begin{itemize}
 			\item $f$ injective
-			\item $f(\bar\alpha)\cup S$ is linearly independent. suppose that a finite linear combination of el. of $S$ and values of $f$ equals $0$, and we can assume all coefficients to be non-zero.
-
-			This combination must induce some element of $f(\bar\alpha)$, and let $\alpha_0$ the maximal of the ordinals encountered.
-			Then $f(\alpha_0)$ is a linear combination of $S$ and elements of the form $f(\beta)$ $\beta<\alpha_0$. $\lightning$.
+			\item $f(\bar\alpha)\cup S$ is linearly independent. 
+				Suppose that a finite linear combination of elements of $S$ and values of $f$ equals $0$, and we can assume all coefficients to be non-zero.
+				This combination must induce some element of $f(\bar\alpha)$, and let $\alpha_0$ the maximal of the ordinals encountered.
+				Then $f(\alpha_0)$ is a linear combination of $S$ and elements of the form $f(\beta)$ $\beta<\alpha_0$. $\lightning$.
 		\end{itemize}
 		Since $\bar\alpha$ has the cardinality of $V$, $f$ is defined as an initial segment of kind $[0,\alpha)$, with $f(\alpha)$ undefined.
-		This means prec. that $f$ that every element of $V$ is linear combination of $S$ and ($f(\beta)$:$\beta<\alpha$)) 
+		This means precisely that every element of $V$ is linear combination of $S$ and $(f(\beta)\colon\beta<\alpha)$ 
 	\end{proof}
 \end{theorem}
 
 \begin{gelaber}
 	In 1821: Cauchy addressed the following functional equation:
-	\[f(x+y) = f(x)+f(y) \qquad f\colon \mathcal R\to \mathcal R\]
-	Cauchy proved that all the continuous solutions are linear, of the form $f(x)=c\cdot x$ for some $c\in \mathcal R$.
-	Hamel first proved that $\mathcal R$ has a $\mathcal Q$-basis.
-	Suppose $f\colon \mathcal R\to \mathcal R$ is additive. Then:
+	\[f(x+y) = f(x)+f(y) \qquad f\colon \mathbb R\to \mathbb R\]
+	Cauchy proved that all the continuous solutions are linear, of the form $f(x)=c\cdot x$ for some $c\in \mathbb R$.
+	Hamel first proved that $\mathbb R$ has a $\mathbb Q$-basis.
+
+	Suppose $f\colon \mathbb R\to \mathbb R$ is additive. Then:
 	\begin{itemize}
 		\item $f(x_1+\ldots+x_n)=f(x_1)+\ldots+f(x_n)$
-		\item $f(n\cdot x) = n\cdot f(x)$ for all $n\in \mathcal N$
-		\item Since $f(0)= f(0+0)=f(0)+f(0) \to  f(0)=0$ Hence if $n\le 0$, $0=f(nx+(-n)x)=f(nx)-nf(x)$.
-			So $f(nx) = nf(x)$ for all $n\in \mathcal Z$.
+		\item $f(n\cdot x) = n\cdot f(x)$ for all $n\in \mathbb N$
+		\item Since $f(0)= f(0+0)=f(0)+f(0) \to  f(0)=0$.
+			Hence if $n\le 0$, $0=f(nx+(-n)x)=f(nx)-nf(x)$.
+			So $f(nx) = nf(x)$ for all $n\in \mathbb Z$.
+		\item If $q=\frac{m}{n}\in \mathbb Q$, then $n\cdot q=m$ so that $n\cdot f(q)=m\cdot f(i)$, so that, posing $c= f(i)$, we have $f(q)=c\cdot q$.
 	\end{itemize}
-	If $q=\frac{m}{n}\in \mathcal Q$, then $n\cdot q=m$ so that $n\cdot f(q)=m\cdot f(i)$, so that, posing $c= f(i)$, we have $f(q)=c\cdot q$.
-	If $f$ is continuous, then $f(x)=c\cdot x$ for all $x\in \mathcal R$. (Cauchy's Result).
+	If $f$ is continuous, then $f(x)=c\cdot x$ for all $x\in \mathbb R$. (Cauchy's Result).
 	If $x$ is real, $y=\frac{m}{n}\cdot x$, then $f(n\cdot y)= f(m\cdot x) \leadsto f(y) = \frac{m}{n} f(x)$.
-	Hence $f$ is $\mathcal Q$-linear.
-	If we have a basis of $\mathcal R$ over $\mathcal Q$, say $B$, then each $h$ is determined by its values on $B$.
+	Hence $f$ is $\mathbb Q$-linear.
+	If we have a basis of $\mathbb R$ over $\mathbb Q$, say $B$, then each $h$ is determined by its values on $B$.
 \end{gelaber}
 
 \begin{theorem}
-	If $f\colon \mathcal R\to\mathcal R$ is a non-continuous solution $f$ of the Cauchy equation, then it's graph $G(f)=\{(x, f(x))\colon x\in \mathcal R\}$ is dense in $\mathcal R^2$
+	If $f\colon \mathbb R\to\mathbb R$ is a non-continuous solution $f$ of the Cauchy equation, then it's graph $G(f)=\{(x, f(x))\colon x\in \mathbb R\}$ is dense in $\mathbb R^2$
 	\begin{proof}
-		Let $(x,y)\in \mathcal R^2$ and $U$ is a neighborhood of $(x,y)$.
-		Since $f$ is a non-$\mathcal R$-linear solution, there exist $a,b\neq 0$ in $\mathcal R$, such thet $\alpha=\frac{f(a)}{a}$ and $\beta= \frac{f(b)}{b}$ are different.
-		This means $u=(a,f(a)), v=(b,f(b))$ are ind., and therefore are a basis of $\mathcal R$.
-		There exist $p,q\in \mathcal R$ sucht that $(x,y)=pu+qv$.
-		Since $\bar{\mathcal Q^2}= \mathcal R^2$, we can find $\bar p, \bar q \in \mathcal Q$ such that $\bar pu+\bar qu \in U$. 
+		Let $(x,y)\in \mathbb R^2$ and $U$ is a neighborhood of $(x,y)$.
+		Since $f$ is a non-$\mathbb R$-linear solution, there exist $a,b\neq 0$ in $\mathbb R$, such that $\alpha=\frac{f(a)}{a}$ and $\beta= \frac{f(b)}{b}$ are different.
+		This means $u=(a,f(a)), v=(b,f(b))$ are independent, and therefore are a basis of $\mathbb R$.
+		There exist $p,q\in \mathbb R$ sucht that $(x,y)=pu+qv$.
+		Since $\bar{\mathbb Q^2}= \mathbb R^2$, we can find $\bar p, \bar q \in \mathbb Q$ such that $\bar pu+\bar qu \in U$. 
 		Therefore $\bar pu+\bar pv= (\bar pa + \bar qb, \bar pf(a)+\bar qf(b)) = (\bar pa+\bar qb, f(\bar pa+ \bar qb))\in U\cap G(f)$
 	\end{proof}
 \end{theorem}
 
-{\bf Preliminaries:} Zorn's Lemma.
+{\bf Preliminaries (2):} Zorn's Lemma.
 Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$. 
 \begin{itemize}
-	\item $x$ an {\em upper bound} of $S$: $\forall_{s\in S}(s\le x)$
+	\item $x$ an {\em upper bound} of $S$: $\forall_{s\in S}(s\le x)$.
 	\item $x$ {\em least upper bound} or {\em supremum} of $S$: $\forall_{u\in X}[\forall_{s\in S}(s\le u) \leftrightarrow x\le u]$, that is:
 	\begin{enumerate}[(i)]
-		\item $x$ is an upper bound of $S$. ($x=u$, $\leftarrow$)
+		\item $x$ is an upper bound of $S$. ($x=u$, $\leftarrow$).
 		\item if $u\in X$ upper bound of $S$, then $x\le u$ ($\rightarrow$).
 	\end{enumerate}
 	\item {\em Common form of Zorn's Lemma}: If $X\neq \emptyset$ and every chain $C\subseteq X$ with $C\neq \emptyset$ has an upper bound, then $X$ has a maximal element.
-	\item We could chop $X\neq\emptyset$ together with $X\neq \emptyset$,$[\emptyset \text{is chain}]$, or we can keep $X\neq \emptyset$ and every chain $C\subseteq X$, $C\neq\emptyset$ has a supremum.
+	\item We could chop $X\neq\emptyset$ together with $X\neq \emptyset$, $[\emptyset \text{is chain}]$, or we can keep $X\neq \emptyset$ and every chain $C\subseteq X$, $C\neq\emptyset$ has a supremum.
 	\item All of this can be reversed: 
 		Let $(X,\le)$ be a poset.
-		$D\subseteq X$ is called {\em directed}: $\forall_{x,y \in D} \exists_{z\in D}(x\in z \land y\le z)$
-	\item Every chain is a directed subset
-	\item A maximal element of a directed subset is also its greatest element
-	\item $X$ directed complete: every directed subset $D\subseteq X$, with $D\neq \emptyset$, $D$ has a supremum in $X$, we write the supremum as $\bigvee D$
-	\item {\em dcpo}: directed complete partial order
+		$D\subseteq X$ is called {\em directed}: $\forall_{x,y \in D} \exists_{z\in D}(x\in z \land y\le z)$.
+	\item Every chain is a directed subset.
+	\item A maximal element of a directed subset is also its greatest element.
+	\item $X$ {\em directed complete}: every directed subset $D\subseteq X$, with $D\neq \emptyset$, $D$ has a supremum in $X$, we write the supremum as $\bigvee D$.
+	\item {\em dcpo}: directed complete partial order.
 	\item $V$ Vectorspace, $S$ Subspace. $V, S =\{ W\colon W\le V\}$ is a dcpo with $\le$ as partial order with $V$ as $V$. Exercise!
 	
 	\item A subset of a dcpo $X$ is {\em closed} if $\bigvee D\in S$ for all $D\subseteq S$ non-empty directed subset.
-	\item $S$ is closed subset of the dcpo $(\mathcal P, \subseteq)$
-	\item Here follows two equivalent formulations of Zorn's Lemma:
+	\item $S$ is closed subset of the dcpo $(\mathbb P, \subseteq)$
+	\item Here follow two equivalent formulations of Zorn's Lemma:
 	\begin{itemize}
 		\item Every dcpo $X\neq 0$ has a maximal element
 		\item If $X$ is a dcpo, then every closed subset $S\subseteq X$ with $S\neq 0$ has a maximal element.
@@ -218,27 +221,27 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \end{lemma}
 
 \begin{definition}
-	Nun sei $S$ eine Menge; $X=\mathcal P(S)$ mit $\subseteq$; $F,G\subseteq X$.
+	Nun sei $S$ eine Menge; $X=\mathbb P(S)$ mit $\subseteq$; $F,G\subseteq X$.
 	$F$ heißt {\em von endlichem Charakter}, wenn für alle $T\subseteq S$ gilt: $T\in F\iff \forall T_0\subseteq T(T_0 \text{ endlich } \to T_0\in F)$.
 	$G$ {\em von coendlichem Charakter}, wenn für alle $T\subseteq S$ gilt: $T\in G\subseteq \exists_{T_0\subseteq T}(T_0 \text{ endlich } \land T_0\in G)$.
 	Falls $X=F\dot\cup G$, so gilt: $F$ von endlichem Charakter $\iff$ $G$ von coendlichem Charakter.
 \end{definition}
 
 \begin{lemma}[(Teichmüller-)Tukey (TuL)]
-	Ist $S$ eine Menge, und $F\subseteq\mathcal P(S)$, so gilt: $F\neq\emptyset \land F$ von endlichem Charakter $\to$ $F$ hat maximales Element.
+	Ist $S$ eine Menge, und $F\subseteq\mathbb P(S)$, so gilt: $F\neq\emptyset \land F$ von endlichem Charakter $\to$ $F$ hat maximales Element.
 \end{lemma}
 
 \begin{definition}
 	Wieder sei $X$ dcpo. 
 	$F\subseteq X$ {\em abgeschlossen}, wenn für jedes gerichtete $D\subseteq X$ gilt: 
-	$\underbrace[\forall_{x\in X}(x\in D\to x\in F){D\subseteq F}\to \bigvee D\in F$.
+	$\underbrace{D\subseteq F}_{\forall_{x\in X}(x\in D\to x\in F)}\to \bigvee D\in F$.
 	$G$ {\em offen}, wenn für jedes gerichtete $D\subseteq X$ gilt: 
-	$\bigvee D\in G\to \underbrace[D\cap G\neq 0]{\exists_{x\in X}(x\in D \land x\in G)}$
+	$\bigvee D\in G\to \underbrace{\exists_{x\in X}(x\in D \land x\in G)}_{D\cap G\neq 0}$
 	($X=F\dot\cup G\to F \text{ abg. } \iff G \text{ offen}$)
 \end{definition}
 
 \begin{lemma}
-	Es sei $X=\mathcal P(S)$, $F,G\subseteq X$.
+	Es sei $X=\mathbb P(S)$, $F,G\subseteq X$.
 	\begin{enumerate}[(a)]
 		\item $F$ von endlichem Charakter $\to$ $F$ abgeschlossen.
 		\item $G$ von coendlichem Charakter $\to$ $G$ offen.
@@ -265,8 +268,8 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \end{definition}
 
 \begin{definition}[Tukey-Induktion (TuI)]
-	Ist $S$ Menge, $G\subseteq\mathcal P(S)$, so gilt:
-	$G$ von coendl. Charakter $\land$ $G$ progressiv $\to$ $G=\mathcal P(S)$
+	Ist $S$ Menge, $G\subseteq\mathbb P(S)$, so gilt:
+	$G$ von coendl. Charakter $\land$ $G$ progressiv $\to$ $G=\mathbb P(S)$
 \end{definition}
 
 \begin{theorem}
@@ -288,7 +291,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \section*{Allgemeine Abhängigkeit}
 
 \begin{definition}
-	Es sei $S$ eine Menge, sowie $\lhd\subseteq S\times \mathcal P(S)$.
+	Es sei $S$ eine Menge, sowie $\lhd\subseteq S\times \mathbb P(S)$.
 	Stets seien $a, b, c\in S$ und $U, V, W\in S$.
 	$\lhd$ {\em Überdeckung(srelation)}, wenn gelten:
 	\begin{itemize}
@@ -300,7 +303,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \end{definition}
 
 \begin{remark}
-	Eine Überdeckungsrelation ist das gleiche wie ein {\em Abschlußoperator} $U\mapsto U^{\lhd}$ auf $\mathcal P(S)$, mit den folgenden Axiomen:
+	Eine Überdeckungsrelation ist das gleiche wie ein {\em Abschlußoperator} $U\mapsto U^{\lhd}$ auf $\mathbb P(S)$, mit den folgenden Axiomen:
 	\begin{itemize}
 		\item {\em Reflexivität}: $U\subseteq U^\lhd$
 		\item {\em Transitivität}: $U\subseteq V^\lhd \to U^\lhd \subseteq V^\lhd$ % endspricht CUT in kalkülen -> schlecht
@@ -392,14 +395,13 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \end{theorem}
 
 \begin{gelaber}
-{\bf Typische Anwendung} $V$ Vektorraum, $x\in V$. 
-Dann gilt: $\forall_{\varphi in V^*} ( \varphi(x)=0)\to x=0$.
-\begin{proof}[Indirekter Beweis, mit ZL]
-	Wäre $x\neq 0$, so wäre $U=\{x\}$ unabhängig, also gäbe es (Satz) eine Basis $W$ von $V$ mit $W\supseteq U$; d.h. $x\in W$ 
-	Definiere $\varphi \in V*$ durch .. [2 Zeilen]
-\end{proof}
-
-
+	{\bf Typische Anwendung} $V$ Vektorraum, $x\in V$. 
+	Dann gilt: $\forall_{\varphi in V^*} ( \varphi(x)=0)\to x=0$.
+	\begin{proof}[Indirekter Beweis, mit ZL]
+		Wäre $x\neq 0$, so wäre $U=\{x\}$ unabhängig, also gäbe es (Satz) eine Basis $W$ von $V$ mit $W\supseteq U$; d.h. $x\in W$ 
+		Definiere $\varphi \in V*$ durch $\varphi(x)=1$ und $\varphi\upharpoonright W-\{x\}=0$.
+		Dann $\varphi(x)\neq 0$.$\lightning$.
+	\end{proof}
 \end{gelaber}
 
 

@@ -193,7 +193,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\item We could chop $X\neq\emptyset$ together with $X\neq \emptyset$, $[\emptyset \text{is chain}]$, or we can keep $X\neq \emptyset$ and every chain $C\subseteq X$, $C\neq\emptyset$ has a supremum.
 	\item All of this can be reversed: 
 		Let $(X,\le)$ be a poset.
-		$D\subseteq X$ is called {\em directed}: $\forall_{x,y \in D} \exists_{z\in D}(x\in z \land y\le z)$.
+		$D\subseteq X$ is called {\em directed}: $\forall_{x,y \in D} \exists_{z\in D}(x\le z \land y\le z)$.
 	\item Every chain is a directed subset.
 	\item A maximal element of a directed subset is also its greatest element.
 	\item $X$ {\em directed complete}: every directed subset $D\subseteq X$, with $D\neq \emptyset$, $D$ has a supremum in $X$, we write the supremum as $\bigvee D$.
@@ -204,27 +204,27 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\item $S$ is closed subset of the dcpo $(\mathbb P, \subseteq)$
 	\item Here follow two equivalent formulations of Zorn's Lemma:
 	\begin{itemize}
-		\item Every dcpo $X\neq 0$ has a maximal element
-		\item If $X$ is a dcpo, then every closed subset $S\subseteq X$ with $S\neq 0$ has a maximal element.
+		\item Every dcpo $X\neq \emptyset$ has a maximal element
+		\item If $X$ is a dcpo, then every closed subset $S\subseteq X$ with $S\neq \emptyset$ has a maximal element.
 	\end{itemize}
 \end{itemize}
 
 \marginpar{\tiny{13.06.2013}}
 
 \begin{definition}
-	Sei $(x,\le)$ partielle Ordnung, $D\subseteq X$ {\em gerichtet}, wenn jede endliche Teilmenge von $D$ eine obere Schrankeun $D$ hat.
+	Sei $(x,\le)$ partielle Ordnung, $D\subseteq X$ {\em gerichtet}, wenn jede endliche Teilmenge von $D$ eine obere Schranke in $D$ hat.
 	Dies ist gleichbedeutend mit $D\neq\emptyset$ und erfüllt die alte Definition, d.h. $\forall_{x,y\in D}\exists_{z\in D}(x\le z \land y\le x)$.
 \end{definition}
 
 \begin{lemma}[(Kuratowski-)Zorn (ZL)]
-	Jeder dcpo $X\neq 0$ hat ein maximales Element.
-	Äquivalent: Ist $X$ ein dcpo und $S\subseteq X$ abgeschlossen, $S\neq 0$, so hat $S$ ein max. Element
+	Jeder dcpo $X\neq \emptyset$ hat ein maximales Element.
+	Äquivalent: Ist $X$ ein dcpo und $S\subseteq X$ abgeschlossen, $S\neq \emptyset$, so hat $S$ ein max. Element
 \end{lemma}
 
 \begin{definition}
 	Nun sei $S$ eine Menge; $X=\mathbb P(S)$ mit $\subseteq$; $F,G\subseteq X$.
 	$F$ heißt {\em von endlichem Charakter}, wenn für alle $T\subseteq S$ gilt: $T\in F\iff \forall T_0\subseteq T(T_0 \text{ endlich } \to T_0\in F)$.
-	$G$ {\em von coendlichem Charakter}, wenn für alle $T\subseteq S$ gilt: $T\in G\subseteq \exists_{T_0\subseteq T}(T_0 \text{ endlich } \land T_0\in G)$.
+	$G$ {\em von coendlichem Charakter}, wenn für alle $T\subseteq S$ gilt: $T\in G\iff \exists_{T_0\subseteq T}(T_0 \text{ endlich } \land T_0\notin G)$.
 	Falls $X=F\dot\cup G$, so gilt: $F$ von endlichem Charakter $\iff$ $G$ von coendlichem Charakter.
 \end{definition}
 

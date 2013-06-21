@@ -1,3 +1,4 @@
+%% -*- coding: utf-8; fill-column: 150 -*-
 %\documentclass[headsepline=true]{scrartcl}
 \documentclass[headsepline=true,DIV=11]{scrartcl}
 \usepackage[utf8]{inputenc}
@@ -41,6 +42,8 @@
 \newcommand{\EM}{\operatorname{EM}}
 \newcommand{\TuL}{\operatorname{TuL}}
 \newcommand{\TuI}{\operatorname{TuI}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\codom}{\operatorname{codom}}
 
 \begin{document}
 \begin{preamble}
@@ -64,7 +67,7 @@
 
 \begin{gelaber}
 	\begin{enumerate}
-		\item A. Kertesz, {\em Einführung in die Transfinite Algebra} (main reference)
+		\item A. Kertesz. {\em Einführung in die Transfinite Algebra} (main reference)
 		\item I. Kaplanski. {\em Set Theory and Metric Spaces}, AMS 2001
 		\item G. H. Moore. {\em Zermelo's Axiom of Choice}, Springer
 		\item T. Jech. {\em The Axiom of Choice}, North-Holland
@@ -73,6 +76,9 @@
 		\item H. Herrlich. {\em Axiom of Choice}, Springer, 2006
 		\item P. Howard, J.E. Rubin. {\em Consequences of the Axiom of Choice}, AMS, 1998
 		\item J.L. Bell. {\em The Axiom of Choice}, College, 2009
+                \item G. Birkhoff. {\em Lattice Theory}
+                \item P. M. Cohn. {\em Universal Algebra}
+                \item S. Vickers. {\em Topology via Logic}
 	\end{enumerate}
 \end{gelaber}
 
@@ -405,20 +411,124 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\end{proof}
 \end{gelaber}
 
+%20. Juni, 1. Hälfte
 
+$V$ Vektorraum über $K$, $\bigcap\limits_{\varphi\in V^*} \ker(\varphi)=0$ (*)
 
+{\bf Direkter Beweis von (*) mit OI:} $U, W, \ldots$: Untervektorräume [OI: $X$ dcpo, $G\subseteq X$ offen und progressiv $\Rightarrow G=X$]. $E, F,
+\ldots$: endlich Erzeugte Untervektorräume. $X$ bestehe aus allen Untervektorräumen. $X$ partielle Ordnung mit $\subseteq$, sogar dcpo mit $\bigvee
+D=\bigcup D$ für $D\subseteq X$ gerichtet.
 
+{\bf Beachte:} $\bigcup D\in X$, da $D\subseteq X$ gerichtet. [Nun: zu $x,y\in \bigcup D$, das heißt $x\in U\in D$, $y\in W\in D$, also gibt es $Z\in
+  D$ mit $U\subseteq Z, W\subseteq Z$. Dafür: $x, y\in Z$, aber $x+y\in Z$, weshalb $x+y\in\bigcup D$. Ferner ist $\lambda\cdot x\in U$, also
+  $\lambda\cdot x\in\bigcup D$. Warum $0\in\bigcup D$? Nun: $D\neq\emptyset$, etwa $T\in D$, wofür $0\in T$, also $0\in\bigcup D$.
 
+(*) kann man schreiben wie folgt: Für $x\in V$ gilt: $x\in\bigcap\limits_{\varphi\in U^*}\ker(\varphi) \Rightarrow \underbrace{\forall_{U\in X}(x\in
+    U)}_{\mbox{d.h. }x=0}$.
 
+Es sei $G=\{U\in X\mid x\in U\}$. Zu zeigen: für festes $x\in V$ gilt $x\in\bigcap\limits_{\varphi\in V^*}\ker(\varphi)\Rightarrow G=X$. Nach OI zu
+zeigen: (1) $G$ offen, (2) $G$ progressiv.
 
+(1) zu zeigen: $\bigcup D\in G\Rightarrow D\cap G\neq\emptyset$. Nun: $\bigcup D\in G$ heißt $x\in\bigcup D$, das heißt es gibt $W\in D$ mit $x\in W,
+W\in G$.
 
+(2) sei $U\in X$ mit $W\in G$ für jedes $W\in X$ mit $W\supsetneq U$. Zeige $U\in G$. Fall 1: $U=V$. Dann $x\in U$, das heißt $U\in G$. Fall 2:
+$U\subsetneq V$. Nehme $y\in V\backslash U$. Dann $U(y)=U+Ky$. Fall 2.1: $U(y)=V$. Dann sogar $U\oplus Ky)V$ [$U\ni\lambda\cdot
+  y\Rightarrow\lambda=0$, da $\lambda\neq 0\Rightarrow y\in U$ $\lightning$]. Definiere $\varphi\in V^*$ durch $\varphi\upharpoonright U=0$,
+$\varphi(y)=1$. Nach Voraussetzung ist $x\in\ker\varphi=U$, also $U\in G$. Fall 2.2: $U(y)\subsetneq V$. Nehme $z\in V\backslash U(y)$. Nun
+$U\subsetneq U(y)$ und $U\subsetneq U(z)$, also (nach Ind.) $U(y)\in G$ und $U(z)\in G$, das heißt $x\in U(y)$ und $x\in U(z)$, also $x\in U$ (nach
+Lemma unten), das heißt $U\in G$.
 
+\begin{lemma}
+  $z\not\in U(y)\Rightarrow U(y)\cap U(z)\subseteq U$
+  \begin{proof}
+    Ist $x\in U(y)\cap U(z)$, das heißt $x=u+\lambda y\and x=v+\mu z$ für $u,v\in U$, so ist $\mu = 0$ [aus $\mu\neq 0$ folgte
+      $z=\mu^{-1}(x-v)=\mu^{-1}(\underbrace{u-v}_{u}+\lambda v)\in U(y)$ $\lightning$], also $x=v\in U$.
+  \end{proof}
+\end{lemma}
 
+Beweis mit ZL des Satzes, dass für jede Abhängigkeitsrelation $\lhd$ auf einer Menge $S$ für $U, V\subseteq S$ gilt: $U, V$ unabhängig und $U, V$
+äquivalent (das heißt $U\lhd V\and V\lhd U$) impliciert $U, V$ gleichmächtig (das heißt es gibt Bijektion $U\rightarrow V$) (§).
 
+Verwende: Satz von Cantor-Bernstein-Schröder: Sind $U, V$ Mengen und gibt es injektive Abbildungen $U\rightarrow V$ und $V\rightarrow U$, so sind $U$
+und $V$ gleichmächtig. Da (§) symmetrisch ist in $U$ und $V$, reicht es zu zeigen: es gibt eine bijektive Abbildung $U\rightarrow V^*$ mit
+$V^*\subseteq V$.
 
+Dazu sei $W=U\cap V$, eventuell $W=\emptyset$. Definiere $X=\{\varphi':U'\rightarrow V'\mid \varphi\mbox{ bijektiv}, W\subseteq U'\subseteq U,
+W\subseteq V'\subseteq V, V'\cup(U\backslash U')\mbox{ unabhängig}\}$. Wegen $\operatorname{id}_W\in X$ ist $X\neq\emptyset$.
 
+Ordne $X$ durch $\varphi'\le\varphi''\equiv \varphi'\subseteq\varphi''$, das heißt, dass $\varphi''$ fortsetzung von $\varphi'$ ist, das heißt mit
+$\varphi':U'\rightarrow V'$ und $\varphi'':U''\rightarrow V''$ ist $U'\subseteq U''$, $V'\subseteq V''$ und $\varphi''\upharpoonright U'\rightarrow
+V'$ ist gleich $\varphi'$. Nun ist $X$ ein dcpo. Ist $D\subseteq X$ gerictet, so ist $\bar{\varphi}=\bigcup D$ Element von $X$ (!); haben: $\bar{\varphi}=\bigvee D$.
 
+Zu (!): $\bar{\varphi}:\bar{U}\rightarrow\bar{V}$ mit $\bar{U}=\bigcup\{\dom(\varphi')\mid \varphi'\in D\}$; analog
+$\bar{V}=\bigcup\{\codom(\varphi')\mid \varphi'\in D\}$; klar: $\bar{\varphi}$ bijektiv.
 
+%20. Juni, 2. Hälfte
+Zeige: $\bar{V}\cup(U\backslash\bar{U})$ ist unabhängig. Erinnerung: ``Unabhängig'' von endl. Char. Ist $F\subseteq \bar{V}\cap(U\backslash\bar{U})$,
+$F$ endlich, so gibt es (da $D$ gerictet) $\varphi':U'\rightarrow V'$ mit $\varphi'\in D$ und $F\subseteq \underbrace{V'\cup(U\backslash
+  U')}_{\mbox{unabh.}}$, also $F$ unabhängig. Nach ZL hat $X$ ein maximales Element $\varphi^*:U^*\rightarrow V^*$. Noch zu zeigen: $U^*=U$. Annahme
+$U^*\subsetneq U$. Nehme $u\in U\backslash U^*$. Nun: $R^*=V^*\cup(U\backslash U^*)$. $R^*$ unabängig (da $\varphi^*\in X$), also $V\not\lhd
+R^*\backslash\{u\}$ [sonst $u\lhd R^*\backslash\{u\}$ (da $U\lhd V$; Transitivität)], etwa $v\in V$ mit $v\not\lhd R^*\backslash\{u\}$. Betrachte
+$R^{**})=(V^*\cup\{v\})\cup(U\backslash(U^*\cap\{u\}))=(R^*\backslash\{u\})\cup\{v\}$. $R^{**}$ ist unabhängig, das heißt $\forall_{r\in
+  R^{**}}(r\not\lhd R^{**}\backslash\{r\})$ [sonst, etwa $r\in R^\{**\}$ mit $r\lhd R^{**}\backslash\{r\}$, dann $r\neq v$ ($r=v: v\lhd
+  R^{**}\backslash\{v\}=R^*\backslash\{u\}$ $\lightning$), also $r\in R^*\backslash\{u\}$, aber $r\lhd R^{**}\backslash\{r\}$ heißt damit $r\lhd
+  (R^*\backslash\{u,r\})\cup\{v\}$, weshalb $r\lhd R^*\backslash\{r\}$ $\lightning$ ($R^*$ unabhängig) oder
+  $v\lhd(R^*\backslash\{u,r\})\cup\{r\}=R^*\backslash\{u\}$ $\lightning$]. Also wäre $\varphi^{**}:U^*\cup\{u\}\rightarrow V^*\cup\{v\}$ mit
+$\varphi^{**}(x) = \left\{ \begin{array}{rl} \varphi^*(x),& x\in U^* \\ v,& x = u \end{array}\right.$ in $X$ mit $\varphi^* < \varphi^{**}$ im
+Widerspruch zur Maximalität von $\varphi^*$.
+
+\section{Maximale Ideale}
+
+\begin{gelaber}
+  {\bf Erinnerung:} Ring $(R,+,\cdot,0,1)$ mit $(R,+,\cdot)$ abelsche Gruppe, $(R,\cdot,1)$ Halbgruppe, $x(y+z)=xy+xz$, $(x+y)z=xz+yz$. Stets sei $R$
+  kommutativ, das heißt $xy=yx$ gilt in $R$. $x$ heißt {\bf Einheit} von $R$ oder {\bf invertierbar}, wenn es ein $y$ gibt mit $xy=1$. $R^*$ sei die
+  Gruppe der Einheiten von $R$, $R^*$ abelsch. Ein Ring $R$ ist ein Körper, wenn $1\neq 0$ und $R^*=R\backslash\{0\}$. {\bf $R$-Modul}: $M$ ist eine
+  abelsche Grppe $(M,+,0)$ mit $R\times M\rightarrow M$, $(r,x)\mapsto rx$, sodass $r(sx)=(rs)x$, $1x=x$, $r(x+y)=rx+ry$, $(r+s)x=rx+sx$. {\bf
+    $U\subseteq M$ ($R$-)Untermodul}: $U$ Untergruppe von $(M,+,0)$ derart dass gilt: $r\in R \and x\in U\Rightarrow rx\in U$. $Rx=\{rx\mid r\in R\}$,
+  $U+V=\{u+v\mid u\in U, v\in V\}$. $(X_1,\ldots,X_n)=Rx_1+\ldots+Rx_n$. Jede abelsche Gruppe ist ein $\mathbb{Z}$-Modul via $n\cdot
+  x=\underbrace{x\cdot x}_{n\mbox{-mal}}$, $(-n)x=-(nx)$, für $n\ge 0$. Ein {\bf Ideal} von $R$ ist ein $R$-Untermodul von $R$. Ein Ideal $M$ von $R$
+  heißt {\bf maximales Ideal}, wenn $M\neq R$ und für jedes Ideal $I$ von $R$ gilt: $M\subseteq I \Rightarrow M=I \vee I=R$. Das heißt, $M$ ist
+  maximal unter den Idealen $I$ mit $I\neq R$.
+\end{gelaber}
+
+\begin{theorem}
+  Es sei $R$ ein Ring. Zu jedem Ideal $I$ von $R$ mit $I\neq R$ gibt es ein maximales Ideal $M$ von $R$ mit $M\supseteq I$.
+\end{theorem}
+
+\begin{corollary}
+  Jeder Ring, in dem $1\neq 0$, hat ein maximales Ideal. [Satz mit $I=\{0\}$]
+\end{corollary}
+
+\begin{proof}[Beweis Satz mit ZL]
+$X=\{F\subseteq R:F\mbox{ Ideal}, F\neq R, F\supseteq I\}$ ist $\neq\emptyset$ (da $I\in X$) und ein dcpo, denn ist $D\subseteq X$ gerichtet, so ist
+  $\bigcup D$ ein Ideal (!) mit $\bigcup D\supseteq I$ (!) und $\bigcup D\neq R$ [sonst wäre $1\in \bigcup D$, etwa $1\in F\in D$, also $F=R$ nach
+    Bemerkung unten $\lightning$]. Also: $\bigcup D\in X$. Nach ZL hat $X$ ein maximales Element, das heißt $R$ hat ein maximales Ideal $\supseteq I$.
+\end{proof}
+
+\begin{gelaber}
+  {\bf Bemerkung:} Für jedes Ideal $F$ eines Rings $R$ sind äquivalent:
+  \begin{itemize}
+    \item[i.] $F=R$
+    \item[ii.] $1\in F$
+    \item[iii.] $R^*\cap F\neq\emptyset$
+  \end{itemize}
+  \begin{proof}
+    $i.\Rightarrow ii.\Rightarrow iii.$ trivial. $iii.\Rightarrow i.$: Ist etwa $r\in R^*\cap F$, so gibt es $s\in R$ mit $rs=1$; für $t\in F$ gilt
+    dann $t=tsr\in F$ weil $r\in F, sr=1$.
+  \end{proof}
+\end{gelaber}
+
+\begin{gelaber}
+  {\bf Variante von ZL}
+
+  ZL': Ist $X$ ein dcpo, so gibt es zu jedem $x\in X$ ein maximales Element $y\in X$ mit $y\ge x$.
+
+  ZL' $\Rightarrow$ ZL: trivial.
+
+  ZL $\Rightarrow$ ZL': Es sei $x\in X$. Mit $X$ dcpo ist auch $\uparrow x = \{z\in X\mid z\ge x\}$ ein dcpo mit $\uparrow x \neq\emptyset$ (da
+  $x\in\uparrow x$).
+\end{gelaber}
 
 
 \end{document}

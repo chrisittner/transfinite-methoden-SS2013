@@ -44,6 +44,7 @@
 \newcommand{\TuI}{\operatorname{TuI}}
 \newcommand{\dom}{\operatorname{dom}}
 \newcommand{\codom}{\operatorname{codom}}
+\newcommand{\nlhd}{\not\!\!\lhd} % Negation von \ldh
 
 \begin{document}
 \begin{preamble}
@@ -299,7 +300,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 
 \begin{definition}
 	Es sei $S$ eine Menge, sowie $\lhd\subseteq S\times \mathbb P(S)$.
-	Stets seien $a, b, c\in S$ und $U, V, W\in S$.
+	Stets seien $a, b, c\in S$ und $U, V, W\in \mathbb P(S)$.
 	$\lhd$ {\em Überdeckung(srelation)}, wenn gelten:
 	\begin{itemize}
 		\item {\em Reflexivität}: $a\in U\to a\lhd U$
@@ -339,11 +340,11 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\[ a\lhd U\cup\{b\}\to a\lhd U\lor b\lhd U\cup\{a\}\]
 	Ein $U\subseteq S$ heißt {\em ($\lhd$-)abhängig}, wenn $\exists_{b\in U}(b\lhd U-\{b\})$.
 	
-	$U$ heißt {\em ($\lhd$-)unabhängig}, wenn  $\forall_{b\in U}(b\lhd U-\{b\}$.
+	$U$ heißt {\em ($\lhd$-)unabhängig}, wenn  $\forall_{b\in U}(b\nlhd U-\{b\})$.
 \end{definition}
 
 \begin{remark}
-	$U$ abhängig $\to$ $U\neq\emptyset$; $\emptyset$ unabhängig.
+	$U$ abhängig $\to$ $U\neq\emptyset$. Außerdem ist $\emptyset$ unabhängig.
 \end{remark}
 
 \begin{example}
@@ -352,7 +353,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 		\item $S$ Vektorraum; $U^\lhd=(U)$ der von $U$ erzeugte Untervektorraum. $\lhd$ unitär; ``(un)abhängig'' ist ``linear (un)abhängig'' (!)
 		\item $R\subseteq S$ komm. Ringe; für $U\subseteq S$ sei $R[U]$ die {\em Ringadjunktion} von $U$ an $R$ in $S$, d.h.
 			\[ R[U]= \bigcup_{n\ge 0} \{ f(u_1,\ldots,u_n)\colon f\in R[X_1,\ldots,X_n]; u_1,\ldots, u_n \in U\} \]
-			$U^\lhd = \bar{ R[U] }^S$ ganzer Abschluß von $R[U]$ in $S$, d.h. $a\lhd U\iff a^n = r_1a^{n-1}+\ldots+r_{n-1}^a + r_n$ für geeignete $n\ge 1$; $r_1,\ldots,r_n\in R[U]$.
+			$U^\lhd = \bar{ R[U] }^S$ ganzer Abschluß von $R[U]$ in $S$, d.h. $a\lhd U\iff a^n = r_1a^{n-1}+\ldots+r_{n-1} a + r_n$ für geeignete $n\ge 1$; $r_1,\ldots,r_n\in R[U]$.
 			
 			Dann: $\lhd$ finitäre Überdeckungsrelation.
 			$R, S$ Körper, $R(U)$ statt $R[U]\to \lhd$ Abhängigkeitsrelation und ``$\lhd$-(un)abhängigkeit'' ist ``algebraisch (un)abhängig''.
@@ -373,9 +374,9 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	$U$ maximal unabhängig $\iff$ $U$ Basis
 	\begin{proof}
 		``$\Rightarrow$`` (gilt i.a. nicht für $\lhd$ nur Überdeckungsrelation):
-		Zeige: (*) $\land$ $S\not\lhd U \to U \text{ abhängig}$.
-		Nehme $b\in S$ mit $b\not\lhd U$.
-		Speziell $b\not\it U$, d.h. $U\subsetneq U\cup \{b\}$.
+		Zeige: (*) $\land$ $S\nlhd U \to U \text{ abhängig}$.
+		Nehme $b\in S$ mit $b\nlhd U$.
+		Speziell $b\notin U$, d.h. $U\subsetneq U\cup \{b\}$.
 		Nach (*) ist $U\cup \{b\}$ abhängig, d.h. es gibt $a\in U\cup \{b\}$ mit $a\lhd (U\cup \{b\})-\{a\}$.
 		Sofort folgt $a\neq b$ [$a=b\to b\lhd U$ $\lightning$].
 		Also $a\lhd (U-\{a\})\cup\{b\}$.
@@ -403,9 +404,9 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 
 \begin{gelaber}
 	{\bf Typische Anwendung} $V$ Vektorraum, $x\in V$. 
-	Dann gilt: $\forall_{\varphi in V^*} ( \varphi(x)=0)\to x=0$.
+	Dann gilt: $\forall_{\varphi \in V^*} ( \varphi(x)=0)\to x=0$.
 	\begin{proof}[Indirekter Beweis, mit ZL]
-		Wäre $x\neq 0$, so wäre $U=\{x\}$ unabhängig, also gäbe es (Satz) eine Basis $W$ von $V$ mit $W\supseteq U$; d.h. $x\in W$ 
+		Wäre $x\neq 0$, so wäre $U=\{x\}$ unabhängig, also gäbe es (Satz) eine Basis $W$ von $V$ mit $W\supseteq U$; d.h. $x\in W$.
 		Definiere $\varphi \in V*$ durch $\varphi(x)=1$ und $\varphi\upharpoonright W-\{x\}=0$.
 		Dann $\varphi(x)\neq 0$.$\lightning$.
 	\end{proof}

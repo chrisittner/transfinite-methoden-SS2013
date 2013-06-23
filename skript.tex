@@ -414,7 +414,9 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 
 %20. Juni, 1. Hälfte
 
-$V$ Vektorraum über $K$, $\bigcap\limits_{\varphi\in V^*} \ker(\varphi)=0$ (*)
+\marginpar{\tiny{20.06.2013}}
+
+$V$ Vektorraum über $K$, $\bigcap\limits_{\varphi\in V^*} \ker(\varphi)=\{0\}$ (*)
 
 {\bf Direkter Beweis von (*) mit OI:} $U, W, \ldots$: Untervektorräume [OI: $X$ dcpo, $G\subseteq X$ offen und progressiv $\Rightarrow G=X$]. $E, F,
 \ldots$: endlich Erzeugte Untervektorräume. $X$ bestehe aus allen Untervektorräumen. $X$ partielle Ordnung mit $\subseteq$, sogar dcpo mit $\bigvee
@@ -424,8 +426,8 @@ D=\bigcup D$ für $D\subseteq X$ gerichtet.
   D$ mit $U\subseteq Z, W\subseteq Z$. Dafür: $x, y\in Z$, aber $x+y\in Z$, weshalb $x+y\in\bigcup D$. Ferner ist $\lambda\cdot x\in U$, also
   $\lambda\cdot x\in\bigcup D$. Warum $0\in\bigcup D$? Nun: $D\neq\emptyset$, etwa $T\in D$, wofür $0\in T$, also $0\in\bigcup D$.
 
-(*) kann man schreiben wie folgt: Für $x\in V$ gilt: $x\in\bigcap\limits_{\varphi\in U^*}\ker(\varphi) \Rightarrow \underbrace{\forall_{U\in X}(x\in
-    U)}_{\mbox{d.h. }x=0}$.
+(*) kann man schreiben wie folgt: Für $x\in V$ gilt: $x\in\bigcap\limits_{\varphi\in U^*}\ker(\varphi) \Rightarrow \underbrace{\forall U\in X: x\in
+    U}_{\mbox{d.h. }x=0}$.
 
 Es sei $G=\{U\in X\mid x\in U\}$. Zu zeigen: für festes $x\in V$ gilt $x\in\bigcap\limits_{\varphi\in V^*}\ker(\varphi)\Rightarrow G=X$. Nach OI zu
 zeigen: (1) $G$ offen, (2) $G$ progressiv.
@@ -433,23 +435,29 @@ zeigen: (1) $G$ offen, (2) $G$ progressiv.
 (1) zu zeigen: $\bigcup D\in G\Rightarrow D\cap G\neq\emptyset$. Nun: $\bigcup D\in G$ heißt $x\in\bigcup D$, das heißt es gibt $W\in D$ mit $x\in W,
 W\in G$.
 
-(2) sei $U\in X$ mit $W\in G$ für jedes $W\in X$ mit $W\supsetneq U$. Zeige $U\in G$. Fall 1: $U=V$. Dann $x\in U$, das heißt $U\in G$. Fall 2:
-$U\subsetneq V$. Nehme $y\in V\backslash U$. Dann $U(y)=U+Ky$. Fall 2.1: $U(y)=V$. Dann sogar $U\oplus Ky)V$ [$U\ni\lambda\cdot
-  y\Rightarrow\lambda=0$, da $\lambda\neq 0\Rightarrow y\in U$ $\lightning$]. Definiere $\varphi\in V^*$ durch $\varphi\upharpoonright U=0$,
-$\varphi(y)=1$. Nach Voraussetzung ist $x\in\ker\varphi=U$, also $U\in G$. Fall 2.2: $U(y)\subsetneq V$. Nehme $z\in V\backslash U(y)$. Nun
+(2) sei $U\in X$ mit $W\in G$ für jedes $W\in X$ mit $W\supsetneq U$. Zeige $U\in G$.
+
+Fall 1: $U=V$. Dann $x\in U$, das heißt $U\in G$.
+
+Fall 2: $U\subsetneq V$. Nehme $y\in V\backslash U$. Dann $U(y)=U+Ky$.
+
+Fall 2.1: $U(y)=V$. Dann sogar $U\oplus K(y)=V$ [$U\ni\lambda\cdot y\Rightarrow\lambda=0$, da $\lambda\neq 0\Rightarrow y\in U$ $\lightning$]. Definiere $\varphi\in V^*$ durch $\varphi\upharpoonright U=0$,
+$\varphi(y)=1$. Nach Voraussetzung ist $x\in\ker\varphi=U$, also $U\in G$.
+
+Fall 2.2: $U(y)\subsetneq V$. Nehme $z\in V\backslash U(y)$. Nun
 $U\subsetneq U(y)$ und $U\subsetneq U(z)$, also (nach Ind.) $U(y)\in G$ und $U(z)\in G$, das heißt $x\in U(y)$ und $x\in U(z)$, also $x\in U$ (nach
 Lemma unten), das heißt $U\in G$.
 
 \begin{lemma}
   $z\not\in U(y)\Rightarrow U(y)\cap U(z)\subseteq U$
   \begin{proof}
-    Ist $x\in U(y)\cap U(z)$, das heißt $x=u+\lambda y\and x=v+\mu z$ für $u,v\in U$, so ist $\mu = 0$ [aus $\mu\neq 0$ folgte
+    Ist $x\in U(y)\cap U(z)$, das heißt $x=u+\lambda y\land x=v+\mu z$ für $u,v\in U$, so ist $\mu = 0$ [aus $\mu\neq 0$ folgte
       $z=\mu^{-1}(x-v)=\mu^{-1}(\underbrace{u-v}_{u}+\lambda v)\in U(y)$ $\lightning$], also $x=v\in U$.
   \end{proof}
 \end{lemma}
 
 Beweis mit ZL des Satzes, dass für jede Abhängigkeitsrelation $\lhd$ auf einer Menge $S$ für $U, V\subseteq S$ gilt: $U, V$ unabhängig und $U, V$
-äquivalent (das heißt $U\lhd V\and V\lhd U$) impliciert $U, V$ gleichmächtig (das heißt es gibt Bijektion $U\rightarrow V$) (§).
+äquivalent (das heißt $U\lhd V\land V\lhd U$) impliziert $U, V$ gleichmächtig (das heißt es gibt Bijektion $U\rightarrow V$) (§).
 
 Verwende: Satz von Cantor-Bernstein-Schröder: Sind $U, V$ Mengen und gibt es injektive Abbildungen $U\rightarrow V$ und $V\rightarrow U$, so sind $U$
 und $V$ gleichmächtig. Da (§) symmetrisch ist in $U$ und $V$, reicht es zu zeigen: es gibt eine bijektive Abbildung $U\rightarrow V^*$ mit
@@ -460,14 +468,14 @@ W\subseteq V'\subseteq V, V'\cup(U\backslash U')\mbox{ unabhängig}\}$. Wegen $\
 
 Ordne $X$ durch $\varphi'\le\varphi''\equiv \varphi'\subseteq\varphi''$, das heißt, dass $\varphi''$ fortsetzung von $\varphi'$ ist, das heißt mit
 $\varphi':U'\rightarrow V'$ und $\varphi'':U''\rightarrow V''$ ist $U'\subseteq U''$, $V'\subseteq V''$ und $\varphi''\upharpoonright U'\rightarrow
-V'$ ist gleich $\varphi'$. Nun ist $X$ ein dcpo. Ist $D\subseteq X$ gerictet, so ist $\bar{\varphi}=\bigcup D$ Element von $X$ (!); haben: $\bar{\varphi}=\bigvee D$.
+V'$ ist gleich $\varphi'$. Nun ist $X$ ein dcpo. Ist $D\subseteq X$ gerichtet, so ist $\bar{\varphi}=\bigcup D$ Element von $X$ (!); haben: $\bar{\varphi}=\bigvee D$.
 
 Zu (!): $\bar{\varphi}:\bar{U}\rightarrow\bar{V}$ mit $\bar{U}=\bigcup\{\dom(\varphi')\mid \varphi'\in D\}$; analog
 $\bar{V}=\bigcup\{\codom(\varphi')\mid \varphi'\in D\}$; klar: $\bar{\varphi}$ bijektiv.
 
 %20. Juni, 2. Hälfte
 Zeige: $\bar{V}\cup(U\backslash\bar{U})$ ist unabhängig. Erinnerung: ``Unabhängig'' von endl. Char. Ist $F\subseteq \bar{V}\cap(U\backslash\bar{U})$,
-$F$ endlich, so gibt es (da $D$ gerictet) $\varphi':U'\rightarrow V'$ mit $\varphi'\in D$ und $F\subseteq \underbrace{V'\cup(U\backslash
+$F$ endlich, so gibt es (da $D$ gerichtet) $\varphi':U'\rightarrow V'$ mit $\varphi'\in D$ und $F\subseteq \underbrace{V'\cup(U\backslash
   U')}_{\mbox{unabh.}}$, also $F$ unabhängig. Nach ZL hat $X$ ein maximales Element $\varphi^*:U^*\rightarrow V^*$. Noch zu zeigen: $U^*=U$. Annahme
 $U^*\subsetneq U$. Nehme $u\in U\backslash U^*$. Nun: $R^*=V^*\cup(U\backslash U^*)$. $R^*$ unabängig (da $\varphi^*\in X$), also $V\not\lhd
 R^*\backslash\{u\}$ [sonst $u\lhd R^*\backslash\{u\}$ (da $U\lhd V$; Transitivität)], etwa $v\in V$ mit $v\not\lhd R^*\backslash\{u\}$. Betrachte
@@ -485,8 +493,8 @@ Widerspruch zur Maximalität von $\varphi^*$.
   {\bf Erinnerung:} Ring $(R,+,\cdot,0,1)$ mit $(R,+,\cdot)$ abelsche Gruppe, $(R,\cdot,1)$ Halbgruppe, $x(y+z)=xy+xz$, $(x+y)z=xz+yz$. Stets sei $R$
   kommutativ, das heißt $xy=yx$ gilt in $R$. $x$ heißt {\bf Einheit} von $R$ oder {\bf invertierbar}, wenn es ein $y$ gibt mit $xy=1$. $R^*$ sei die
   Gruppe der Einheiten von $R$, $R^*$ abelsch. Ein Ring $R$ ist ein Körper, wenn $1\neq 0$ und $R^*=R\backslash\{0\}$. {\bf $R$-Modul}: $M$ ist eine
-  abelsche Grppe $(M,+,0)$ mit $R\times M\rightarrow M$, $(r,x)\mapsto rx$, sodass $r(sx)=(rs)x$, $1x=x$, $r(x+y)=rx+ry$, $(r+s)x=rx+sx$. {\bf
-    $U\subseteq M$ ($R$-)Untermodul}: $U$ Untergruppe von $(M,+,0)$ derart dass gilt: $r\in R \and x\in U\Rightarrow rx\in U$. $Rx=\{rx\mid r\in R\}$,
+  abelsche Gruppe $(M,+,0)$ mit $R\times M\rightarrow M$, $(r,x)\mapsto rx$, sodass $r(sx)=(rs)x$, $1x=x$, $r(x+y)=rx+ry$, $(r+s)x=rx+sx$. {\bf
+    $U\subseteq M$ ($R$-)Untermodul}: $U$ Untergruppe von $(M,+,0)$ derart dass gilt: $r\in R \land x\in U\Rightarrow rx\in U$. $Rx=\{rx\mid r\in R\}$,
   $U+V=\{u+v\mid u\in U, v\in V\}$. $(X_1,\ldots,X_n)=Rx_1+\ldots+Rx_n$. Jede abelsche Gruppe ist ein $\mathbb{Z}$-Modul via $n\cdot
   x=\underbrace{x\cdot x}_{n\mbox{-mal}}$, $(-n)x=-(nx)$, für $n\ge 0$. Ein {\bf Ideal} von $R$ ist ein $R$-Untermodul von $R$. Ein Ideal $M$ von $R$
   heißt {\bf maximales Ideal}, wenn $M\neq R$ und für jedes Ideal $I$ von $R$ gilt: $M\subseteq I \Rightarrow M=I \vee I=R$. Das heißt, $M$ ist

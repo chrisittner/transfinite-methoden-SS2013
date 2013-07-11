@@ -49,6 +49,9 @@
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\Sat}{\operatorname{Sat}}
+\newcommand{\Jac}{\operatorname{Jac}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\id}{\operatorname{id}}
 
 \begin{document}
 \begin{preamble}
@@ -542,6 +545,191 @@ $X=\{F\subseteq R:F\mbox{ Ideal}, F\neq R, F\supseteq I\}$ ist $\neq\emptyset$ (
   ZL $\Rightarrow$ ZL': Es sei $x\in X$. Mit $X$ dcpo ist auch $\uparrow x = \{z\in X\mid z\ge x\}$ ein dcpo mit $\uparrow x \neq\emptyset$ (da
   $x\in\uparrow x$).
 \end{gelaber}
+
+%% 4. Juli 2013
+
+Allgemeiner, aber analog: $R$ kommutativer Ring, $V$ ein $R$-Modul.
+
+\begin{theorem}
+  Zu jedem Untermodul $U$ von $V$ gibt es einen maximalen Untermodul $M$ von $V$ mit $M\supseteq U$.
+\end{theorem}
+
+\begin{corollary}
+  Ist $V\neq 0$, er hat $V$ einen maximalen Untermodul.
+\end{corollary}
+
+Aus Korollar folgt Satz: Gehe von $V$ zu $V/U$. Ebenso für Ideale. ($V/U\neq 0\Leftrightarrow V\neq U$.) Ebenso für Ideale.
+
+Zurück zum kommutativen Ring $R$. $\Max(R)$ ist die Menge der maximalen Ideale von $R$.
+
+\begin{remark}
+  Es gilt:
+  \begin{itemize}
+    \item $\bigcup\limits_{M\in\Max(R)} M =_{(1)} R\backslash R^\times$
+    \item $\bigcap\limits_{M\in\Max(R)} (R\backslash M) =_{(2)} R^\times$
+  \end{itemize}
+  ZL für $\supseteq$ in (1), $\subseteq$ in (2)
+\end{remark}
+
+\begin{definition}
+  $\Jac(R) = \{x\in R\mid \forall_{y\in R} (1-xy\in R^\times)\}$ {\bf Jacobi-Radikal} von $R$
+\end{definition}
+
+\begin{theorem}
+  $\bigcap\Max(R)=\Jac(R)$
+\end{theorem}
+
+Es gilt $1\in\Jac(R)\Rightarrow 1=0$ [$x=1,y=1\Rightarrow 0=1-xy\in R^\times$, das heißt $1=0z=0$ für ein $z\in R$]
+
+\begin{proof}[Beweis Satz mit ZL für $\subseteq$]
+  $\phantom{a}$
+
+  \begin{itemize}
+    \item $\subseteq$: Es sei $x\in M$ für alle $M\in\Max(R)$. Angenommen, es gäbe $y\in R$ mit $1-xy\not\in R^\times$. Denn $I=(1-xy)\subsetneq R$,
+      also gibt es $M\in\Max(R)$ mit $M\supseteq I$, wofür $x\not\in M$ $\lightning$ [$x\in M\Rightarrow 1=1-\underbrace{1-xy}_{\in
+          M}+\underbrace{xy}_{\in M}\in M$, also $M=R$ $\lightning$].
+    \item $\supseteq$: Es sei $x\in\Jac(R)$ und $M\in\Max(R)$. Annahme: $x\not\in M$, das heißt $I=M+(x)\supsetneq M$. Da $M\in\Max(R)$, ist $I=R$,
+      das heißt $1\in I$, das heißt $1=z+xy$ für ein $z\in M$ und ein $y\in R$, also $M\ni z=1-xy\in R^\times$, $x\in\Jac(R)$, also $M=R$
+      $\lightning$.
+  \end{itemize}
+  Insgesamt $x\in M$.
+\end{proof}
+
+\begin{gelaber}
+  ZL: $X$ dcpo, $F\subseteq X$ abgeschlossen, $F\neq\emptyset$ $\Rightarrow$ $F$ hat maximales element.
+\end{gelaber}
+
+\begin{gelaber}
+  OI: $X$ dcpo, $G\subseteq X$ offen, $G$ progressiv $\Rightarrow$ $G=X$.
+
+  $G$ offen: $D\subseteq X$ gerichtet, $\bigvee D\in G$ $\Rightarrow$
+  $\exists_{x\in D}(x\in G)$.
+
+  $G$ progressiv: $\forall_x . \forall_{y>x}(y\in G) \Rightarrow x\in G$
+\end{gelaber}
+
+$\subseteq$ im obigen Satz folgt aus
+
+\begin{theorem}
+  $a\in\bigcap\Max(R)\Rightarrow 1-a\in R^\times$ (nehme $xy$ als $a$)
+\end{theorem}
+
+Beweis mit OI und folgendem Lemma.
+
+\begin{lemma}
+  Es sei $X$ ein dcpo; $F,G\subseteq X$.
+  \begin{itemize}
+    \item[a.] $F$ monoton $\Rightarrow$ $F$ abgeschlossen.
+    \item[b.] $G$ antimonoton $\Rightarrow$ $G$ offen.
+  \end{itemize}
+  wobei $F$ {\bf monoton}, wenn $F\ni x\le y\Rightarrow y\in F$, $(x\le y \Rightarrow (x\in F\Rightarrow y\in F))$, $G$ {\bf antimonoton}, wenn $x\le
+  y\in G\Rightarrow x\in G$, $(x\le y\Rightarrow (x\in F\Leftarrow y\in F))$
+\end{lemma}
+
+\begin{proof}[Beweis Lemma]
+  $\phantom{a}$
+  \begin{itemize}
+    \item[a.] Es sei $D\subseteq X$, $D$ gerichtet, speziell $D\neq\emptyset$, etwa $z\in D$. Ist $D\subseteq F$, so ist $z\in F$, aber $z\le\bigvee
+      D$, also $\bigvee D\in F$, da $F$ monoton.
+    \item[b.] $D\subseteq X$ gerichtet, $\bigvee D\in G$, $z\in D$, $z\le\bigvee D$ $\Rightarrow$ $z\in G$ ($G$ antimonoton)
+  \end{itemize}
+\end{proof}
+
+\begin{proof}[Beweis Satz]
+  Es sei $a\in\bigcap\Max(R)$. $X=\{\mbox{Ideale }I\neq R\}$ ist ein dcpo. $G=\{I\in X\mid 1-a\not\in I\}$ antimonoton
+  $\underbrace{\Rightarrow}_{\mbox{\tiny Lemma}}$ $G$ offen. $G$ progressiv: Dazu sei $I\in X$ derart, dass $J\in G$ für alle $J\in X$ mit
+  $J\supsetneq I$, zu zeigen $I\in G$. Fall 1: $I\in\Max(R)$. Dann $a\in I$, also $1-a\not\in I$ [$1-a\in I\Rightarrow 1=\underbrace{1-a}_{\in
+      I}+\underbrace{a}_{\in I}$, das heißt $I=R$ $\lightning$]. Somit $I\in G$. Fall 2: $I\not\in\Max(R)$, das heißt es gibt $J\in X$ mit
+  $J\supsetneq I$. Nach Induktion: $J\in G$, also $I\in G$ ($G$ antimonoton). Insgesamt $G=X$ mit OI, also: $1-a\in R^\times$.
+\end{proof}
+
+{\bf Beweismuster.} (*) $X$ dcpo, $G\subseteq X$ antimonoton, $\Max(X)\subseteq G\Rightarrow G=X$, wobei $\Max(X)=\{\mbox{max. elem. von }X\}$.
+
+(*) Folgt aus OI wie in Beweis oben. Genügt für den Satz.
+
+{\bf Anwendung.} $X$ topologischer Raum, $A$ Unteralgebra von ${\cal C}(X,\mathbb{C})$. Für jedes $x\in X$ ist $M(x)\in\Max(A)$, wobei $M(x)=\{f\in
+A\mid f(x)=0\}$. [$M(x)=\Ker(\alpha_x)$ mit $\alpha_x:A\twoheadrightarrow\mathbb{C},f\mapsto f(x)\Rightarrow A/M(x)\cong\mathbb{C}$ Körper.]
+
+\begin{definition}
+  $A$ {\bf Gelfand-Neumark-Algebra (GNA)} wenn $\Max(A)=\{M(x):x\in X\}$.
+\end{definition}
+
+\begin{theorem}
+  Ist $A$ ein GNA, und $f\in A$, mit $\forall_{x\in X}(f(x)\neq 0)$, so ist $\underbrace{f\in A^\times}_{\frac{1}{f}\in A}$ $\Rightarrow$
+  $\frac{1}{f}\in{\cal C}(X,\mathbb{C})$.
+\end{theorem}
+
+\begin{proof}[Beweis mit (*), also OI]
+  Es sei $f\in A$ mit $\forall_{x\in X}(f(x)\neq 0)$. $\{\mbox{echte Ideale von} A\}=:E$ dcpo. Zu zeigen: $\forall_{I\in E}(f\not\in I)$, das heißt
+  $E=G$ mit $G=\{I\in E\mid f\not\in i\}$ antimonoton. Nun: $\Max(A)\subseteq G$, denn ist $M\in\Max(A)$, so ist $M=M(x)$ für ein $x\in X$, da $A$
+  eine GNA, also $f\not\in M$, das heißt $M\in G$, denn aus $f\in M=M(x)$ folgte $f(x)=0$ $\lightning$.
+\end{proof}
+
+{\bf Beispiel.} Wiener-Algebra $A=\{\sum\limits_{n\in\mathbb{Z}} a_ne^{int}\mid\sum\limits_{n\in\mathbb{Z}}|a_n|<\infty\}$.
+
+{\bf Anwendung.} Der algebraische Abschluss eines Körpers $K$. Ein Körper $\bar{K}$ heißt {\bf algebraischer Abschluss} von $K$, wenn
+$\bar{K}\supseteq K$, $\bar{K}$ algebraisch über $K$ und $\bar{K}$ algebraisch abgeschlossen, das heißt zu jedem Polynom
+$f\in\bar{K}[T]\backslash\bar{K}$ gibt es $x\in\bar{K}$ mit $f(x)=0$. Zum Beispiel ist
+$\bar{\mathbb{Q}}=\{x\in\mathbb{C}\mid\exists_{g\in\mathbb{Q}[T]\backslash\mathbb{Q}}(g(x)=0)\}$ ein algebraischer Abschluss von $\mathbb{Q}$ mit
+$\bar{\mathbb{Q}}\subsetneq\mathbb{C}$, zum Beispiel $\pi, e\not\in\mathbb{C}\backslash\bar{\mathbb{Q}}$.
+
+\begin{theorem}[Steinitz 1910; Beweis nach Artin]
+  Jeder Körper $K$ hat einen algebraischen Abschluss $\bar{K}$.
+\end{theorem}
+
+\begin{lemma}[Kronecker]
+  Zu $f_1,\ldots,f_n\in K[T]\backslash K$ gibt es Körper $L\supseteq K$, sodass jedes $f_i$ in $L$ eine Nullstelle hat. [$n=1$: oBdA $f$ irreduzibel,
+    $L=K[T]/(f), x=\bar{T}$.]
+\end{lemma}
+
+\begin{proof}[Beweis Satz]
+  Es sei $\Lambda=K[T]\backslash K$; für jedes $f\in\Lambda$ sei $X_f$ eine Unbestimmte. Sei $P=K[\{X_f\mid f\in\Lambda\}]$, und $I=(\{f(X_f)\mid
+  f\in\Lambda\})$ als Ideal von $P$.
+
+  Behauptung: $1\not\in I$. Beweis: $1\in I\rightarrow 1=_{(*)}\sum\limits_{i=1}^r g_i f_i(X_{f_i})$, $g_i\in P$. Nach Lemma gibt es Körper
+  $L\supseteq K$ und $x_1,\ldots,x_r\in L$ mit $f_i(x_i)=0$. Setze $x_i$ ein für $X_{f_i}$ ein (*). Dann $1=\sum\tilde{g_i}f_i=0$ in $L$ $\lightning$.
+
+  $E_i=P/M$ ist Körper, $E_1\supseteq K$ wegen $P\supseteq K$. Wegen $P=K[\{X_f\mid f\in\Lambda\}]$ ist $E_1=K[\{x_f:f\in\Lambda\}]$ mit $x_f=X_f+M\in
+  E_1$. Wegen $M\supseteq I$ ist $f(x_f) = f(X_f)\mod M = 0\mod M$ für $f\in\Lambda$. Nun wiederhole das Verfahren. Konstruiere Körper $K=E_0\subseteq
+  E_1\subseteq E_2\subseteq \ldots$ wie folgt: Zu $E_n$ konstruiere $E_{n+1}$ ``wie $E_1$ zu $K$''. Damit ist $E_{n+1}|E_n$ algebraisch, und jedes
+  $h\in E_n[T]\backslash E_n$ hat Nullstelle in $E_{n+1}$. Insgesamt ist $\bar{K}=\bigcup\limits_{n\ge 0}E_n$ ein Körper: Alle $E_n|K$ algebraisch,
+  also $\bar{K}|K$ algebraisch. Ist $f\in\bar{K}[T]\backslash\bar{K}$, etwa $f\in E_N[T]\backslash E_n$, so hat $f$ Nullstelle in
+  $E_{N+1}\subseteq\bar{K}$.
+\end{proof}
+
+Mit ZL kann man zeigen: Sind $\bar{K},\tilde{K}$ algebraische Abschlüsse von $K$, so gibt es einen Isomorphismus $\varphi:\bar{K}\rightarrow\tilde{K}$
+mit $\varphi\upharpoonright K=\id K$.
+
+{\bf Übung.} (ZL) Es sei $S$ eine Menge. Zu jeder partiellen Ordnung $P\subseteq S\times S$ auf $S$ gibt es eine lineare Ordnung $Q\subseteq S\times
+S$ auf $S$ mit $Q\supseteq P$.
+
+{\bf Erinnerung.} Sind $A\subseteq B$ kommutative Ringe, $S\subseteq B$, so ist $A[S]=\bigcup\limits_{n\ge 0}\{f(s_1,\ldots,s_n):f\in
+A[T_1,\ldots,T_n],s_1,\ldots,s_n\in S\}$ {\bf Ringadjunktion} von $S$ an $A$ in $B$.
+
+{\bf Anwendung.} Hilbert'scher Nullstellensatz (HNS).
+
+\begin{lemma}[Körpertheoretische Fassung des HNS]
+  Sind $K\subseteq L$ Körper mit $L=K[a_1,\ldots,a_r]$, so ist $L|K$ algebraisch, sogar endlich.
+\end{lemma}
+
+\begin{theorem}[Schwache Form des HNS]
+  Es sei $K$ ein Körper, $K$ algebraisch abgeschlossen. Für $f_1,\ldots,f_m\in K[T_1,\ldots,T_n]$ sei $I=(f_1,\ldots,f_m)$ in
+  $R=K[T_1,\ldots,T_n]$. Ist $I\neq R$, so gibt es $t\in k^n$ mit $f_i(t)=0$ für alle $i\in\{1,\ldots,m\}$.
+\end{theorem}
+
+\begin{proof}[Beweis mit ZL]
+  Wegen $I\neq R$ gibt es ein maximales Ideal $M$ mit $M\supseteq I$. Nun betrachte $M(t)=(T_1-t_1,\ldots,T_n-t_n)$ in $R$ für $t=(t_1,\ldots,t_n)\in
+  K^n$, wofür $M(t)\in\Max(R)$ [$R \twoheadrightarrow_{\alpha_t} k, f\mapsto f(t)$ mit $\Ker(\alpha_t)\supseteq M(t)$, sogar $=$ (!).]
+
+  Zu $M\in\Max(R)$ gibt es $t\in k^n$ mit $M=M(t)$ [siehe unten!]. Aus $M(t)=M\supseteq I\ni f_1,\ldots,f_m$ folgt $f_i(t)=0$ für alle $i\le m$.
+
+  Es sei $M\in\Max(R)$. Dann ist $R/M$ Körper, $R/M=K[\bar{T_1},\ldots,\bar{T_n}]$ mit $\bar{T_i}=T_i+M$ in $R/M$, also $R/M$ algebraisch über $K$,
+  somit $K=R/M$, das heißt $k\rightarrow R \twoheadrightarrow R/M$ ist Isomorphismus. Zu $\bar{T_i}\in R/M$ gibt es also $\bar{t_i}=\bar{T_i}$ in
+  $R/M$. Dann $M(t)\subseteq M$, da $T_i-t_i\in M$, also $M(t)=M$ wegen $M(t)$ maximal.
+\end{proof}
+
+{\bf Alternativ mit Beweismuster.} $X=\{\mbox{Echte Ideale in }R\}$, $G=\{I\in X\mid\exists_{t\in K^n}(M(t)\supseteq I)\}$, $G$
+antimonoton. $\Max(X)\subseteq G \underbrace{\Rightarrow}_{OI} G=X$.
 
 %% 11. Juli 2013
 

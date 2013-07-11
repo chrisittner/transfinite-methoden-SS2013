@@ -48,6 +48,7 @@
 \newcommand{\Max}{\operatorname{Max}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\Sat}{\operatorname{Sat}}
 
 \begin{document}
 \begin{preamble}
@@ -625,5 +626,99 @@ Es gilt: $\sqrt{I}\ni a \Leftrightarrow I\between\left<a\right>$.
   $x\in T$. Fall 2: $x$ reduzibel, etwa $x=y\wedge z$ mit $x<y,x<z$. Nach Induktionsvoraussetzung: $y,z\in T$. Da $T$ $\wedge$-abgeschlossen, folgt
   $x\in T$.
 \end{proof}
+
+\begin{theorem}[Beweismuster]
+  $X$ dcpo mit $\wedge$; $T\subseteq X$ offen, $\wedge$-abgeschlossen, $\forall_{x\in X}(\Irr(x)\Rightarrow x\in T)\Rightarrow\forall_{x\in X}(x\in
+  T)$.
+\end{theorem}
+
+\begin{definition}
+Nun sei $\lhd$ eine Überdeckungsrelation auf Menge $S$, $U^\lhd=\{a\in S\mid a \lhd U\}$; Axiome: Reflexivität $U\subseteq U^\lhd$; Transitivität
+$U\subseteq V^\lhd\Rightarrow U^\lhd\subseteq V^\lhd$. $U\subseteq S$ {\bf saturiert} oder ein {\bf Ideal}, wenn $U=U^\lhd$.
+\end{definition}
+
+$\Sat(\lhd)=\{U\subseteq S\mid U=U^\lhd\}$ ist eine gegenüber $\cap$ und, falls $\lhd$ finitär, gerichteten Vereinigungen abgeschlossene Teilmenge von
+$\mathbb{P}(S)$. In der Tat gilt: $I,J\in\Sat(\lhd)\Rightarrow I\cap J\in\Sat(\lhd)$ [zu zeigen: $a\lhd I\cap J\Rightarrow a\in I\cap J$. Nun: $a\lhd
+  I\cap J\Rightarrow a\lhd I\Rightarrow_{I=I^\lhd} a\in I$; genauso für $J$.] Ist ferner $D$ eine gerichtete Teilmenge von $\Sat(\lhd)$, so ist
+$\bigcup D\in\Sat(\lhd)$, denn: zu zeigen: $a\lhd\bigcup D\Rightarrow a\in\bigcup D$. Aber aus $a\lhd\bigcup D$ folgt (da $\lhd$ finitär) $a\lhd D_0$
+für endliches $D_0\subseteq D$, also $a\lhd F$ für ein $F\in D$ (obere Schranke von $D_0$), das heißt $a\in F$, also $a\in\bigcup D$.
+
+Für $F\in\Sat(\lhd)$ ist $\uparrow F=\{G\in\Sat(\lhd)\mid G\supseteq F\}$ eine gegenüber $\cap$ und gerichteten Vereinigungen abgeschlossene Teilmenge
+von $\Sat(\lhd)$, denn ist $D\subseteq\uparrow F$ gerichtet, so ist $D\neq\emptyset$, etwa $G\in D$, wofür $\bigcup D\supseteq G\supseteq F$, also
+$\bigcup D\in\uparrow F$.
+
+Wende Beweismuster auf $X=\uparrow F$ an mit $\cap$ als $\wedge$.
+
+\begin{definition}
+  $I\in\Sat(\lhd)$ {\bf irreduzibel}, wenn aus $I=G\cap H$ folgt $I=G$ oder $I=H$. Das heißt, $I$ ist {\bf reduzibel}, wenn $I=G\cap H$ mit
+  $G\supsetneq I$, $H\supsetneq I$ ($G, H\in\Sat(\lhd)$).
+\end{definition}
+
+\begin{theorem}[Noether, McCoy, Fuchs, Schmidt]
+  Es sei $\lhd$ eine finitäre Überdeckungsrelation auf einer Menge $S$. Für $F\in\Sat(\lhd)$ gilt $F\underbrace{=}_{\mbox{(§)}}\bigcap\{I\in\uparrow
+  F\mid I\mbox{ irreduzibel}\}$.
+\end{theorem}
+
+\begin{proof}[Beweis mit Beweismuster, also mit OI]
+  In (§) ist $\subseteq$ klar. Zu $\supseteq$ sei $a\in\bigcap\{G\in\uparrow F\mid G\mbox{ irreduzibel}\}$. Zeige: $a\in F$, das heißt
+  $\forall_{G\in\uparrow F}(a\in G)$. Also ist zu zeigen: $T=X$ mit $T=\{G\in X\mid a\in G\}$ und $X=\uparrow F$. Nun ist $X$ dcpo mit $\cap$; $T$ ist
+  $\cap$-abgeschlossen und $T$ offen: Ist $\bigcup D\in T$, das heißt $a\in\bigcup D$, so ist $a\in G$ für ein $G\in D$, das heißt $a\in\bigcup D$, so
+  ist $a\in G$ für ein $G\in D$, das heißt $G\in T$ für ein $G\in D$, also $D\between T$ gilt für alle $D\subseteq X$. Nach Voraussetzung an $a$ gilt
+  $G\in T$ für alle irreduziblen $G\in X$. Mit Beweismuster ergibt sich $\forall_{G\in X}(G\in T)$, das heißt $T=X$.
+\end{proof}
+
+\begin{definition}
+  Zusätzlich zur (finitären) Überdeckungsrelation $\lhd$ auf $S$ sei nun gegeben eine {\bf binäre Operation} $\circ:S\times S\rightarrow S$. Dieses
+  $\circ$ muss nicht einmal assoziativ sein. $(S,\circ)$ Grouppoid\footnote{{\bf nicht} der kategorientheoretische Groupoid-Begriff}/Magma. Ferner sei
+  gegeben ein {\bf ausgezeichnetes Element} $e\in S$ derart, dass für jedes $F\in\Sat(\lhd)$ gilt: aus $e\in F$ folgt $F=S$. Ein $F\in\Sat(\lhd)$
+  heißt {\bf eigentlich}, wenn $e\in F$.
+\end{definition}
+
+\begin{gelaber}
+  Betrachte die folgenden beiden Eigenschaften von $\lhd$ und $\circ$:
+  \begin{itemize}
+    \item {\bf Weakening}. $ab\lhd a$ und $ab\lhd b$ für alle $a,b\in S$ (wobei $x\lhd y \equiv x\lhd\{y\}$, sowie $ab\equiv a\circ b$).
+    \item {\bf Weak Right}. $(U,a)^\lhd\cap (U,b)^\lhd\subseteq (U,ab)^\lhd$, das heißt $x\lhd U, a$ und $x\lhd U,b$ $\Rightarrow$ $x\lhd U,ab$ für
+      alle $x,a,b\in S$, $U\subseteq S$ (wobei $U,c$ stehe für $U\cap\{c\}$).
+  \end{itemize}
+\end{gelaber}
+
+\begin{definition}
+  Ein Ideal $P$ heißt {\bf Primideal}, wenn aus $ab\in P$ folgt $a\in P$ oder $b\in P$.
+\end{definition}
+
+\begin{remark}
+  Mit Weakening ist jedes Primideal irreduzibel. [Übung]
+\end{remark}
+
+\begin{lemma}
+  Mit Weak Right ist jedes irreduzible Ideal ein Primideal.
+\end{lemma}
+
+\begin{proof}
+  Es sei $I\in\Sat(\lhd)$ irreduzibel, $ab\in I$. Annahme: $a\not\in I\not\ni b$. Nehme $G=(I,a)^\lhd,H=(I,b)^\lhd$. Dann: $G\supsetneq I$;
+  $H\supsetneq I$; $G,H\in\Sat(\lhd)$; $I\subseteq G\cap H$; mit Weak Right auch $G\cap H\subseteq (I,ab)^\lhd=I^\lhd=I$.
+\end{proof}
+
+\begin{theorem}[Universeller Satz von Krull-Lindenbaum]
+  Es sei $\lhd$ eine finitäre Überdeckung und $\circ$ eine binäre Operation auf der Menge $S$ (sowie $e\in S$ ein ausgezeichnetes Element). Gilt Weak
+  Right, so ist $F=\bigcap\{P\in\uparrow F\mid P\mbox{ (eigentliches) Primideal}\}$ für jedes $F\in\Sat(\lhd)$.
+\end{theorem}
+
+\begin{proof}
+  $F\subseteq\bigcap\{P\in\uparrow F\mid P\mbox{ Primideal}\}\underbrace{\subseteq}_{\mbox{\tiny Lemma}}\bigcap\{I\in\uparrow F\mid I\mbox{
+    irreduzibel}\}\underbrace{\subseteq}_{\mbox{\tiny Satz N-M-F-S}} F$.
+\end{proof}
+
+{\bf Anwendung}. $R$ kommutativer Ring, $S=R$, $U^\lhd=\sqrt{(U)}$, dann $\lhd$ finitäre Überdeckungsrelation; ferner sei $\circ$ die Multiplikation
+in $R$, sowie $e=1$. Weak Right ist hier $\sqrt{(U,a)}\cap\sqrt{(U,b)}\subseteq\sqrt{(U,ab)}$.
+
+\begin{proof}[Beweis von Weak Right]
+  Für $x\in\sqrt{(U,a)}\cap\sqrt{(U,b)}$, etwa $x^k\in(U,a),x^l\in(U,b)$, etwa $x^k=u+ra,x^l=v+tb$ mit $u,v\in U$, ist
+  $x^{k+l}=(u+ra)(v+tb)=\underbrace{uv+utb+rav}_{\in(U)}+rtab\in(U,ab)$, also $x\in\sqrt{(U,ab)}$.
+\end{proof}
+
+Hier sind die (eigentlichen) Ideale bezüglich $\lhd$ genau die (echten) Radikalideale von $R$. Ferner sind die eigentlichen Primideale bezüglich
+$\lhd,\circ$ genau die Primideale von $R$. Also gilt $\sqrt{F}=\bigcap\{P\in\Spec(R):P\supseteq F\}$ (Korollar zum Satz von Krull).
 
 \end{document}

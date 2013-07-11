@@ -45,6 +45,9 @@
 \newcommand{\dom}{\operatorname{dom}}
 \newcommand{\codom}{\operatorname{codom}}
 \newcommand{\nlhd}{\not\!\!\lhd} % Negation von \ldh
+\newcommand{\Max}{\operatorname{Max}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Irr}{\operatorname{Irr}}
 
 \begin{document}
 \begin{preamble}
@@ -539,5 +542,88 @@ $X=\{F\subseteq R:F\mbox{ Ideal}, F\neq R, F\supseteq I\}$ ist $\neq\emptyset$ (
   $x\in\uparrow x$).
 \end{gelaber}
 
+%% 11. Juli 2013
+
+\subsection{Primideale}
+
+$p\in\mathbb{Z}\backslash\{0,-1,1\}$ heißt {\bf Primzahl}, wenn $p|ab\Rightarrow p|a \vee p|b$. Nun sei $R$ ein kommutativer Ring. Ideal $I$ von $R$
+heißt {\bf Primideal}, wenn $1\not\in I$ und $ab\in I\Rightarrow a\in I \vee b\in I$. Zum Beispiel ist $(p)$ Primideal von $\mathbb{Z}$ genau dann,
+wenn $p=0$ oder $p$ Primzahl. $S\subseteq R$ {\bf multiplikativ} oder {\bf Monoid}, wenn $1\in S$ und $a\in S\wedge b\in S\Rightarrow ab\in S$. Für
+jedes Ideal $P$ von $R$: $P$ Primideal $\Leftrightarrow$ $R\backslash P$ Monoid. Weiter sind Monoide $\{1\},R^*,\left<a\right>=\{a^n\mid n\ge 0\},
+S+I=\{s+x\mid s\in S,x\in I\}$ falls $S$ Monoid, $I$ Ideal: $(s+x)(t+y) = \underbrace{st}_{\in S}+\underbrace{sy+xt+xy}_{\in I}$. $0$ Primideal
+$\Leftrightarrow$ $R$ {\bf Integritätsring}, das heißt $1\neq 0$ und $ab=0$ folgt $a=0\vee b=0$. Allgemein ist ein Ideal $P$ Primideal genau dann,
+wenn $R/P$ Integritätsring. Ferner: Ein Ideal $M$ von $R$ ist maximal genau dann, wenn $R/M$ Körper.
+
+{\bf Speziell} $\Max(R)\subseteq\Spec(R)$, wobei $\Spec(R)=\{P\underbrace{\subseteq}_{(*)} R\mid P\mbox{ Primideale}\}$ {\bf Maximal-/Primspektrum} von
+$R$. (*) wird gleich gezeigt.
+
+\begin{theorem}[Krullscher Primidealsatz]
+  Es sei $R$ kommutativer Ring, $S\subseteq R$ Monoid, $I\subseteq R$ Ideal. Ist $I\cap S=\emptyset$, so gibt es ein $P\in\Spec(R)$ mit $P\supseteq
+  I$ und $P\cap S=\emptyset$. Genauer gilt für $I\cap S=\emptyset$:
+  \begin{itemize}
+    \item[a.] $\Max(X)\neq\emptyset,X=\{F\subseteq R\mid F\mbox{ Ideal mit } F\supseteq I, F\cap S=\emptyset\}$.
+    \item[b.] $\Max(X)\subseteq\Spec(R)$
+  \end{itemize}
+\end{theorem}
+
+{\bf Spezialfälle:}
+\begin{itemize}
+  \item[1.] $S\in\{\{1\},R^*,\{1\}+I\}$ $\Rightarrow$ $X=\{\mbox{Ideale } F\supseteq I\mbox{ mit }F\subsetneq R\}$ $\Rightarrow$ $\Max(X)=\Max(R/I)$;
+    a. bekannt, da dann $I\cap S=\emptyset$ heißt $I\subsetneq R$; b. für $I=0$: $\Max(R)\subseteq\Spec(R)$, das ist (*).
+  \item[2.] $S=R\backslash P$, $P\in\Spec(R)$: $\Max(X)=\{P\}$
+  \item[3.] $S=\left<a\right>,a\in R$: s.u.!
+\end{itemize}
+
+\begin{proof}[Beweis Satz mit ZL]
+  Es sei $I\cap S=\emptyset$.
+  \begin{itemize}
+    \item[a.] $X\neq\emptyset$ wegen $I\in X$; $X\subseteq\mathbb{P}(R)$ abgeschlossen. $D\subseteq X$ gerichtet $\Rightarrow$ $\bigcup D\in X$. Wegen
+      $\mathbb{P}(R)$ dcpo folgt mit ZL $\Max(X)\neq\emptyset$.
+    \item[b.] Es sei $P\in\Max(X)$. Wegen $1\in S$ ist $1\not\in P$. Annahme: es gibt $a,b\in R\backslash P$ mit $ab\in P$. Für $G=P+(a)$, $H=P+(b)$
+      gilt $G,H\supsetneq P$; $G,H\supseteq I$; also $G\between S, H\between S$\footnote{$A\between B :\Leftrightarrow A\cap B\neq\emptyset$}, etwa
+      $x+ua\in S\ni y+vb$ mit $x,y\in P$; $u,v\in R$; also $S\ni(x+ua)(y+vb)=\underbrace{xy+xvb+uay}_{\in P}+\underbrace{uvab}_{\in P}$ $\lightning$.
+  \end{itemize}
+\end{proof}
+
+\begin{definition}
+  Für ein Ideal $I$ von $R$ heißt $\sqrt{I}=\{a\in R\mid\exists_{n\ge 0}(a^n\in I)\}$ {\bf Radikal} von $I$; $\sqrt(I)$ ist ein Ideal mit
+  $\sqrt(I)\supseteq I$. $I$ heißt {\bf Radikalideal}, wenn $\sqrt{I}=I$; stets gilt: $\sqrt{\sqrt{I}}=\sqrt{I}$. $\sqrt{0}$ {\bf Nilradikal},
+  kleinstes Radikalideal!
+\end{definition}
+
+Es gilt: $\sqrt{I}\ni a \Leftrightarrow I\between\left<a\right>$.
+
+\begin{corollary}
+  Für jedes Ideal $I$ gilt: $\sqrt{I}=\bigcap\{P\in\Spec(R)\mid P\supseteq I\}$. Speziell für $I=0$: $\sqrt{I}=\bigcap\Spec(R)$.
+\end{corollary}
+
+\begin{proof}{Korollar mit Satz}
+  \begin{itemize}
+    \item $\subseteq$: $a\in\sqrt{I}$, etwa $a^n\in I$, dann $a^n\in P$, also $a\in P$ für alle Primideale $P\supseteq I$. [hier: Primideale sind
+      Radikalideale!]
+    \item $\supseteq$: Ist $a\not\in\sqrt{I}$, das heißt $I\cap\left<a\right>=\emptyset$, so gilt nach Satz dass es ein $P\in\Spec(R)$ gibt mit
+      $P\supseteq I$ und $P\cap\left<a\right>=\emptyset$, das heißt $a\not\in P$.
+  \end{itemize}
+\end{proof}
+
+\subsection{Ein universeller Satz von Krull-Lindenbaum}
+
+\begin{definition}
+  Es sei $X$ ein dcpo, in dem zu $x,y\in X$ die größte untere Schranke $x\wedge y\in X$ existiert, charakterisiert durch $\forall_{z\in X}(z\le
+  x\wedge y\Leftrightarrow z\le x\wedge z\le y)$. Ein $T\subseteq X$ heißt {\bf $\wedge$-abgeschlossen}, wenn aus $x\in T$ und $y\in T$ folgt $x\wedge
+  y\in T$. Ein $x\in X$ heißt {\bf irreduzibel}, wenn aus $x=y\wedge z$ folgt $x=y$ oder $x=z$ ($y,z\in X$). Damit: $x\in X$ {\bf reduzibel}, wenn es
+  $x,z\in X$ gibt mit $x=y\wedge z$ und $x<y$ und $x<z$.
+\end{definition}
+
+\begin{theorem}[Beweismuster]
+  Ist $X$ wie oben, und $T\subseteq X$ offen und $\wedge$-abgeschlossen, so gilt: Gehört jedes irreduzible $x\in X$ zu $T$, so ist $T=X$. Kurz:
+  $\Irr(X)\subseteq T\Rightarrow T=X$\footnote{$\Irr(X)$ = irreduzible Elemente von $X$}.
+\end{theorem}
+
+\begin{proof}[Beweis mit OI]
+  Zu zeigen: $T$ progressiv. Dazu sei $x\in X$ mit $\forall_{y>x}(y\in T)$. Zu zeigen: $x\in T$. Fall 1: $x$ irreduzibel, dann nach voraussetzung
+  $x\in T$. Fall 2: $x$ reduzibel, etwa $x=y\wedge z$ mit $x<y,x<z$. Nach Induktionsvoraussetzung: $y,z\in T$. Da $T$ $\wedge$-abgeschlossen, folgt
+  $x\in T$.
+\end{proof}
 
 \end{document}

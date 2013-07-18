@@ -1024,8 +1024,18 @@ L$. Sei $\vdash$ die Herleitbarkeit mit klassischer Logik. $\bar{\Gamma} = \{\va
   F}$). $\Gamma$ {\bf Theorie} wenn $\Gamma=\bar{\Gamma}$. {\bf Henkin-Erweiterung} ${\cal L}^*$ von $\cal L$: Füge hinzu neue Konstante $c_{\psi,x}$
 für jede Formel $\psi\in {\cal F}$ und Variable $x$ mit $\exists_x\psi$ geschlossen. ${\cal F}*$ Formeln von ${\cal L}^*$.
 
+\begin{center}
+\begin{tabular}{r||c|c|c}
+        & Krull        & Artin-Schreier    & Lindenbaum \\ \hline
+$S$     & $R$ Ring     & $K$ Körper        & $\cal F$ \\
+$U^\lhd$ & $\sqrt{(U)}$ & $Q\left<U\right>$ & $\bar{U\cup H}$ \\
+$\circ$ & $\cdot$      & $+$               & $\vee$ \\
+$e$     & $1$          & $-1$              & $\bot$
+\end{tabular}
+\end{center}
+
 \begin{definition}
-  {\bf Henkin-Menge} $\Theta$: Theorie $\Theta\subseteq{\cal L}^*$ mit
+  {\bf Henkin-Menge} $\Theta$: Theorie $\Theta\subseteq{\cal L}^*$ mit $\bot\not\in\Theta$ und
   \begin{itemize}
     \item[i.] $\psi_1\vee\psi_2\in\Theta\Rightarrow \psi_1\in\Theta \vee \psi_2\in\Theta$
     \item[ii.] $(\exists_{x}\psi)\in\Theta$, $(\exists_x\psi)\mbox{ geschlossen}$ $\Rightarrow$ es gibt Term $t$ mit $\psi[x/t]\in\Theta$.
@@ -1035,5 +1045,92 @@ für jede Formel $\psi\in {\cal F}$ und Variable $x$ mit $\exists_x\psi$ geschlo
 $H$: Menge der {\bf Henkin-Axiome} der Form $\exists x \psi\rightarrow\psi[x/c_{\psi,x}]$ ($\psi$,$x$,$c_{\psi,x}$ wie oben).
 
 Falls $\Theta\subseteq{\cal L}^*$ Theorie mit $\Theta\supseteq H$, so ist (ii.) automatisch erfüllt (modus ponens).
+
+Es sei $S={\cal F}^*$, sowie $\Gamma^\lhd=\bar{\Gamma\cup H}$ für $\Gamma\subseteq{\cal F}^*$. Dann: Die Ideale sind die Theorien
+$\Theta\subseteq{\cal L}^*$ mit $\Theta\supseteq H$; die eigentlichen Primideale sind die Henkin-Mengen, wobei $\circ$ stehe für $\vee$ und $e$ für
+$\bot$. Dabei ist $e=\bot$ ausgezeichnet: $\bot\in\Theta$, $\Theta$ Ideal $\Rightarrow$ $\Theta={\cal F}^*$ wegen ex falso quodlibet:
+$\bot\rightarrow\varphi$.
+
+Weak Right:
+
+$\varphi\lhd\Gamma,\psi_1\wedge\varphi\lhd\Gamma,\psi_2\Rightarrow\varphi\lhd\Gamma,\psi_1\circ\psi_2$
+
+$\Gamma,H,\psi_1\vdash\varphi \wedge \Gamma,H,\psi_2\vdash\varphi\Rightarrow\Gamma,H,\psi_1\vee\psi_2\vdash\varphi$
+
+Folgt aus: $\Gamma,\psi_1\vdash\varphi \wedge \Gamma,\psi_2\vdash\varphi\Rightarrow\Delta,\psi_1\vee\psi_2\vdash\varphi$, das heißt aus der
+Eliminationsregel für die Disjunktion. Weakening folgt aus der Einführungsregel für Disjunktion. $\lhd$ ist eine finitäre Überdeckungsrelation. Hier
+lautet der universelle Satz von Krull-Lindenbaum:
+
+$$ \bigcap\limits_{\tiny \begin{array}{c}\Theta\mbox{ Henkin-Menge}\\ \Theta\supseteq\Gamma\cup H\end{array}}\Theta \subseteq \bar{\Gamma\cup H}
+\qquad (\Gamma\subseteq{\cal F}^*) $$
+
+für $\varphi\in{\cal F}^*$, $\Gamma\subseteq{\cal F}^*$ gilt: ist $\varphi\in\Theta$ für jede Henkin-Menge $\Theta$ mit $\Theta\supseteq\Gamma\cup H$,
+so gilt $\Gamma,H\vdash\varphi$.
+
+{\bf Fakten.}
+\begin{itemize}
+\item[a.] $\Gamma,H\vdash\varphi\Rightarrow\Gamma\vdash\varphi$, wobei $\Gamma\subseteq{\cal F}$ und $\varphi\in{\cal F}$.
+\item[b.] Für jedes $\Theta\subseteq{\cal F}^*$ mit $\Theta\supseteq H$ sind äquivalent:
+  \begin{itemize}
+  \item[i.] $\Theta$ ist eine Henkin-Menge (das heißt $\Theta$ Theorie, $\bot\not\in\Theta$,
+    $\psi_1\vee\psi_2\in\Theta\Rightarrow\psi_1\in\Theta\vee\psi_2\in\Theta$.
+  \item[ii.] $\Theta$ ist eine vollständige ($\psi\in\Theta\vee(\lnot\psi)\in\Theta$), konsistente Theorie
+    ($\bot\not\in\Theta\,\&\,\Theta=\bar{\Theta}$).
+  \item[iii.] $\Theta$ ist eine maximale konsistente Theorie.
+  \end{itemize}
+\end{itemize}
+
+Beweis Übung. Beachte: $\top\in\Theta$, falls $\Theta$ Theorie; $\top$ ``ist'' $\varphi\vee\lnot\varphi$.
+
+Damit folgt der Gödel'sche Vollständigkeitssatz!
+
+{\bf Fallstudie.} Von idealen Objekten zu endlichen Beweismethoden.
+
+Sei $R$ kommutativer Ring mit $1$; $f,g\in R[T]$, $f=\sum\limits_{i=0}^n a_iT^i, g=\sum\limits_{j=0}^m b_jT^j$. Es sei $i_0\in\{1,\ldots,n\}$ beliebig
+aber fest; setze $u=a_{i_0}$.
+
+Betrachte NC: $$fg=1\Rightarrow\underbrace{\exists_k.u^k=0}_{\in\sqrt{0}}$$.
+
+Mit $fg=\sum c_kT^k$, $c_k=\sum\limits_{i+j=k}a_jb_j$ lautet $fg=1$ wie folgt:
+
+$$ c_0=1, c_1=0,\ldots, c_{n+m} = 0  $$
+
+das heißt
+
+$$ a_0 b_0 = 1, a_0 b_1 + a_1 b_0 = 0, \ldots, a_n b_m = 0 $$
+
+{\bf Kurzer und eleganter Beweis} von NC mit Satz von Krull, also mit ZL/OI:
+
+{\bf Spezialfall} $R$ Integritätsring: $\underbrace{\deg(fg)}_0=\underbrace{\deg(f)}_0+\underbrace{\deg(g)}_0$. Also sogar $u=0$.
+
+{\bf Allgemeiner Fall} $R$ beliebig: Reduzierung auf Spezialfall: Gehe von $R$ nach $R/P$ für jedes Primideal $P$. Dann ist $R/P$
+Integritätsring. Dort ist $u=0$ in $R/P$, das heißt $u=0 \mod P$, das heißt $u\in P$.
+
+Also gesehen: $fg=1\Rightarrow\forall_P(u\in P)$, das heißt $u\in\bigcap\Spec(R)$.
+
+Wollen zeigen: $fg=1\Rightarrow\exists_k(u^k=0)$, das heißt $u\in\sqrt{0}$.
+
+Mit Satz von Krull ($\bigcap\Spec(R)=\sqrt{0}$) fertig.
+
+{\bf Alternativer Beweis} von NC mit vollständiger Induktion.
+
+{\bf Finite Induction} (FI): Ist $X$ endliche partiell geordnete Menge und $U\subseteq X$ progressiv, so ist $U=X$.
+
+Folgt mit vollständiger Induktion nach $|X|$. Zeige zunächst: $X$ hat ein maximales Element $x$. Dann: $\underbrace{U}_{\subseteq X}$ progressiv,
+$\underbrace{x}_{\in X}$ maximal $\Rightarrow$ $x\in U$.
+
+Für NC bestehe $X$ aus allen Idealen der Form $(D)$ mit $D\subseteq\{a_1,\ldots,a_n\}\cup\{b_1,\ldots,b_m\}$. Dieses $X$ ist endlich, partiell
+geordnet durch $\subseteq$. Es sei $U=\{F\in X\mid u\in\sqrt{F}\}$. Zu zeigen: $u\in\sqrt{0}$, das heißt $\forall_{F\in X}\underbrace{(F\in
+  U)}_{U\in\sqrt{F}}$, das heißt $U=X$. Mit FI zu zeigen: $U$ progressiv, das heißt für $F\in X$ folgt $F\in U$ aus $\forall_{G\in X}.G\supsetneq
+F\Rightarrow G\in U$. Sei also $F\in X$ so. Zeige: $F\in U$.
+\begin{itemize}
+\item Fall 1: $\forall_{i>0}.a_i\in F$. Dann $u\in F$, also $F\in U$.
+\item Fall 2: $\exists_{i>0}.a_i\not\in F$. Dann auch $\exists_{j>0}.b_j\not\in F$. Wähle $i, j$ maximal. Dann $F\ni
+  0=\underbrace{\sum\limits_{\tiny \begin{array}{c}p+q = i+j\\ q>j\end{array}} a_pb_q}_{\in F} +
+  a_jb_j+\underbrace{\sum\limits_{\tiny \begin{array}{c}p+q=i+j\\ p>i\end{array}} a_pb_q}_{\in F}\Rightarrow a_ib_j\in
+  F$. $G=F+(a_i),H=F+(b_j)\Rightarrow G,H\in X$; $G,H\supsetneq F$ $\underbrace{\Rightarrow}_{\mbox{Ind}}$ $G,H\in U$, das heißt $u^k\in G, u^l\in H$,
+  also $u^{k+l}\in G\cap H$, das heißt $u\in\sqrt{G}\cap\sqrt{H}\underbrace{\subseteq}_{\mbox{Weak Right}}\sqrt{F+(a_jb_j)}\underbrace{=}_{a_ib_j\in
+    F}\sqrt{F}$, also $F\in U$.
+\end{itemize}
 
 \end{document}

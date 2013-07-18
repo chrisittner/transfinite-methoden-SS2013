@@ -29,6 +29,7 @@
 %\renewcommand{\Section}[1]{\section{#1} \setcounter{theorem}{0}\setcounter{remark}{0}}
 
 \newcommand{\Card}{\operatorname{Card}}
+\newcommand{\Char}{\operatorname{Char}}
 \newcommand{\WO}{\operatorname{WO}}
 \newcommand{\AC}{\operatorname{AC}}
 \newcommand{\ZF}{\operatorname{ZF}}
@@ -859,7 +860,7 @@ Wende Beweismuster auf $X=\uparrow F$ an mit $\cap$ als $\wedge$.
   Zusätzlich zur (finitären) Überdeckungsrelation $\lhd$ auf $S$ sei nun gegeben eine {\bf binäre Operation} $\circ:S\times S\rightarrow S$. Dieses
   $\circ$ muss nicht einmal assoziativ sein. $(S,\circ)$ Grouppoid\footnote{{\bf nicht} der kategorientheoretische Groupoid-Begriff}/Magma. Ferner sei
   gegeben ein {\bf ausgezeichnetes Element} $e\in S$ derart, dass für jedes $F\in\Sat(\lhd)$ gilt: aus $e\in F$ folgt $F=S$. Ein $F\in\Sat(\lhd)$
-  heißt {\bf eigentlich}, wenn $e\in F$.
+  heißt {\bf eigentlich}, wenn $e\not\in F$.
 \end{definition}
 
 \begin{gelaber}
@@ -898,8 +899,9 @@ Wende Beweismuster auf $X=\uparrow F$ an mit $\cap$ als $\wedge$.
     irreduzibel}\}\underbrace{\subseteq}_{\mbox{\tiny Satz N-M-F-S}} F$.
 \end{proof}
 
-{\bf Anwendung}. $R$ kommutativer Ring, $S=R$, $U^\lhd=\sqrt{(U)}$, dann $\lhd$ finitäre Überdeckungsrelation; ferner sei $\circ$ die Multiplikation
-in $R$, sowie $e=1$. Weak Right ist hier $\sqrt{(U,a)}\cap\sqrt{(U,b)}\subseteq\sqrt{(U,ab)}$.
+{\bf Anwendung 1} (Satz von Krull für kommutative Ringe). $R$ kommutativer Ring, $S=R$, $U^\lhd=\sqrt{(U)}$, dann $\lhd$ finitäre
+Überdeckungsrelation; ferner sei $\circ$ die Multiplikation in $R$, sowie $e=1$. Weak Right ist hier
+$\sqrt{(U,a)}\cap\sqrt{(U,b)}\subseteq\sqrt{(U,ab)}$.
 
 \begin{proof}[Beweis von Weak Right]
   Für $x\in\sqrt{(U,a)}\cap\sqrt{(U,b)}$, etwa $x^k\in(U,a),x^l\in(U,b)$, etwa $x^k=u+ra,x^l=v+tb$ mit $u,v\in U$, ist
@@ -908,5 +910,130 @@ in $R$, sowie $e=1$. Weak Right ist hier $\sqrt{(U,a)}\cap\sqrt{(U,b)}\subseteq\
 
 Hier sind die (eigentlichen) Ideale bezüglich $\lhd$ genau die (echten) Radikalideale von $R$. Ferner sind die eigentlichen Primideale bezüglich
 $\lhd,\circ$ genau die Primideale von $R$. Also gilt $\sqrt{F}=\bigcap\{P\in\Spec(R):P\supseteq F\}$ (Korollar zum Satz von Krull).
+
+%% 18. Juli 2013
+
+{\bf Anwendung 2} (Satz von Artin-Schreier).
+
+\begin{definition}
+  $K$ Körper; {\bf Kegel} $P$ in $K$ ist $P\subseteq K$ mit: $x\in K\Rightarrow x^2\in P$; $x,y\in P\Rightarrow x+y, x\cdot y \in P$. Spezielll:
+  $P\supseteq Q$; $Q=\{\mbox{Quadratsummen}\}=\{x_1^2+\ldots+x_n^2\}$, sogar: $Q$ kleinster Kegel in $K$.
+\end{definition}
+
+\begin{remark}
+  Es sei $P$ ein Kegel.
+  \begin{itemize}
+  \item[a.] Es sei $a\in K^*$. Dann:
+    \begin{itemize}
+    \item $a\in P \Rightarrow a^{-1}\in P$
+    \item $a,-a\in P\Rightarrow -1\in P$
+    \end{itemize}
+  \item[b.]
+    \begin{itemize}
+    \item $\Char(K)>0 \Rightarrow -1\in P$
+    \item $\Char(K)\neq 2, -1\in P \Rightarrow P=K$
+    \end{itemize}
+  \end{itemize}
+\end{remark}
+
+\begin{proof}
+  \begin{itemize}
+  \item[a.] $a^{-1}=\underbrace{a}_{\in P}\underbrace{(a^{-1})^2}_{\in Q}\in P$; $-1=\underbrace{-a}_{\in P}\underbrace{a^{-1}}_{\in P}\in P$.
+  \item[b.]
+    \begin{itemize}
+    \item $0 = \underbrace{n}_{\ge 2}\cdot 1=\underbrace{1+\ldots+1}_{n\mbox{-mal}} \Rightarrow -1 = \underbrace{1+\ldots+1}_{\underbrace{(n-1)}_{\ge
+        1}-\mbox{-mal}} \in P$.
+    \item $x\in K \Rightarrow 4x=\underbrace{\overbrace{(1+x)^2-(1-x)^2}^y}_{\in P\mbox{ falls }-1\in P} \underbrace{\Rightarrow}_{\Char(K)\neq 2}
+      x\in P$, wobei $x=\frac{1}{4}y=(2^2)^{-1}y\in P$.
+    \end{itemize}
+  \end{itemize}
+\end{proof}
+
+\begin{definition}
+  Kegel $P\left< U\right>$ {\bf erzeugt von} $U\subseteq K$ und Kegel $P$:
+  $$ P\left< U\right>=\{a\in K\mid \exists_{n\ge 0}\exists_{u_1,\ldots,u_n\in U}\exists_{(\lambda_v)_{v\in\{0,1\}^n}\in
+    P^{\{0,1\}^n}}. a=\sum\limits_{v\in\{0,1\}^n}\lambda_v u^v\} $$
+  mit $u^v = u_1^{v_1}\cdot\ldots\cdot u_n^{v_n}$.
+
+  $P\left< U\right>$ kleinster Kegel $\supseteq P\cup U$.
+\end{definition}
+
+\begin{theorem}
+  Ein $P\subseteq K$ ist ein Kegel genau dann, wenn die Relation $\le$ definiert durch $a\le b :\Leftrightarrow b-a\in P$ eine {\bf Präordnung} oder
+  {\bf Quasiordnung} ist (das heißt reflexiv und transitiv), für die gilt: $a\le b\Rightarrow a+c\le b+c$, $a\le b \, \& \, c\ge 0\Rightarrow ac\le
+  bc$. Mit $\le$ zu $P$ wie oben ist $P=\{x\in K\mid x\ge 0\}$.
+\end{theorem}
+
+Nun schreibe $-P = \{-x\mid x\in P\}=\{x\mid -x\in P\}$.
+
+\begin{definition}
+  Eine {\bf Ordnung} auf $K$ ist eine Präordnung, die {\bf linear} beziehungsweise {\bf total} ist, das heißt $x\le 0$ oder $x\ge 0$ für $x\in K$
+  ({\bf Dichotomie}), und für die gilt, dass sie auch {\bf antisymmetrisch} ist, das heißt $x\le 0\,\&\,x\le 0\Rightarrow x=0$ für $x\in K$.
+\end{definition}
+
+Mit $P$ zu $\le$ wie oben gilt: Antisymmetrie $\Leftrightarrow$ $P\cap -P=\{0\}$ (entscheidend: $\subseteq$), Dichotomie $\Leftrightarrow$ $P\cup -P =
+K$ (entscheidend: $\supseteq$).
+
+\begin{remark}
+  $P$ Kegel, $\le$ zu $P$ wie oben. Dann
+  \begin{itemize}
+  \item $\le$ antisymmetrisch $\Leftrightarrow$ $-1\not\in P$
+  \item $\le$ dichotom $\Leftrightarrow$ für $x,y\in K$ gilt: $x+y\in P\Rightarrow x\in P \vee y\in P$
+  \end{itemize}
+\end{remark}
+
+Beweis Übung.
+
+Nun sei $S=K$; $U^\lhd=Q\left<U\right>$ für $U\subseteq S$; $a\circ b = a+b$; $e=-1$. Dann ist $\lhd$ eine finitäre Überdeckungsrelation; die Ideale
+sind genau die Kegel, das heißt die Präordnungen; die Primideale sind genau die Ordnungen, das heißt die Kegel $P$ mit $P\cap -P=\{0\}$, $P\cup -P=K$;
+die eigentlichen Ideale sind genau die Präordnungen mit $-1\not\in P$.
+
+\begin{lemma}
+  $P$ Kegel; $a,b\in K$, $\Char K\neq 2$ $\Rightarrow$ $P\left<a\right>\cap P\left<b\right>\subseteq P\left<a+b\right>$.
+\end{lemma}
+
+\begin{proof}
+  Es sei $x\in P\left<a\right>\cap P\left<b\right>$, das heißt $x=ya+y'$, $x=zb+z'$ mit $y,y',z,z'\in P$. Dann
+  $(y+z)x=yx+zx=y(zb+z')+z(ya+y')=yz(a+b)+yz'+y'z\in P\left<a+b\right>$.
+
+  {\bf Fall 1}. $y+z\in K^*$. Dann $x=\underbrace{(y+z)^{-1}}_{\in P}(y+z)x\in P\left<a+b\right>$.
+
+  {\bf Fall 2}. $y=0$. Dann $x=y'\in P$.
+
+  {\bf Fall 3}. $y+z=0\,\&\,y\in K^*$. Dann $-y=z\in P$, also $y\in P\cap -P$, also $-1\in P$, dann wegen $\Char(K)\neq 2$ folgt $P=K$.
+\end{proof}
+
+Der universelle Satz von Krull-Lindenbaum hat hier die folgende Form, wobei $K$ ein Körper mit $\Char(K)\neq 2$ sei:
+
+$$ \bigcap\limits_{\tiny \begin{array}{c}{O\supseteq O} \\ {O\mbox{ Ordnung von } K}\end{array}} O \subseteq P $$
+
+wobei $P$ Präordnung auf $K$.
+
+Spezialfall $P=Q=\{\mbox{Quadratsummen}\}$: Die {\bf total positiven} Elemente von $K$ (das heißt die $x\in K$ mit $x\ge 0$ für jede Ordnung auf $K$)
+sind genau die Quadratsummen in $K$.
+
+\begin{theorem}[Artin-Schreier]
+  Ein Körper $K$ kann genau dann angeordnet werden (das heißt es gibt eine Ordnung auf $K$), genau dann, wenn $K$ {\bf formal reell} ist (das heißt
+  $-1$ ist keine Quadratsumme in $K$).
+\end{theorem}
+
+Dieser Satz wurde von Artin verwendet zur Lösung von Hilberts 17. Problem.
+
+{\bf Anwendung 3} (Satz von Lindenbaum). Sei $\cal L$ eine Sprache der Prädikatenlogik erster Stufe. Sei $\cal F$ die Menge der Formeln in $\cal
+L$. Sei $\vdash$ die Herleitbarkeit mit klassischer Logik. $\bar{\Gamma} = \{\varphi\in F\mid \Gamma\vdash\varphi\}$ ($\Gamma\subseteq {\cal
+  F}$). $\Gamma$ {\bf Theorie} wenn $\Gamma=\bar{\Gamma}$. {\bf Henkin-Erweiterung} ${\cal L}^*$ von $\cal L$: Füge hinzu neue Konstante $c_{\psi,x}$
+für jede Formel $\psi\in {\cal F}$ und Variable $x$ mit $\exists_x\psi$ geschlossen. ${\cal F}*$ Formeln von ${\cal L}^*$.
+
+\begin{definition}
+  {\bf Henkin-Menge} $\Theta$: Theorie $\Theta\subseteq{\cal L}^*$ mit
+  \begin{itemize}
+    \item[i.] $\psi_1\vee\psi_2\in\Theta\Rightarrow \psi_1\in\Theta \vee \psi_2\in\Theta$
+    \item[ii.] $(\exists_{x}\psi)\in\Theta$, $(\exists_x\psi)\mbox{ geschlossen}$ $\Rightarrow$ es gibt Term $t$ mit $\psi[x/t]\in\Theta$.
+  \end{itemize}
+\end{definition}
+
+$H$: Menge der {\bf Henkin-Axiome} der Form $\exists x \psi\rightarrow\psi[x/c_{\psi,x}]$ ($\psi$,$x$,$c_{\psi,x}$ wie oben).
+
+Falls $\Theta\subseteq{\cal L}^*$ Theorie mit $\Theta\supseteq H$, so ist (ii.) automatisch erfüllt (modus ponens).
 
 \end{document}

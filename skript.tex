@@ -45,7 +45,7 @@
 \newcommand{\TuI}{\operatorname{TuI}}
 \newcommand{\dom}{\operatorname{dom}}
 \newcommand{\codom}{\operatorname{codom}}
-\newcommand{\nlhd}{\not\!\!\lhd} % Negation von \ldh
+\newcommand{\nlhd}{\ntriangleleft} % Negation von \ldh
 \newcommand{\Max}{\operatorname{Max}}
 \newcommand{\Spec}{\operatorname{Spec}}
 \newcommand{\Irr}{\operatorname{Irr}}
@@ -205,7 +205,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 		\item if $u\in X$ upper bound of $S$, then $x\le u$ ($\rightarrow$).
 	\end{enumerate}
 	\item {\em Common form of Zorn's Lemma}: If $X\neq \emptyset$ and every chain $C\subseteq X$ with $C\neq \emptyset$ has an upper bound, then $X$ has a maximal element.
-	\item We could chop $X\neq\emptyset$ together with $X\neq \emptyset$, $[\emptyset \text{is chain}]$, or we can keep $X\neq \emptyset$ and every chain $C\subseteq X$, $C\neq\emptyset$ has a supremum.
+	\item We could chop $X\neq\emptyset$ together with $X\neq \emptyset$, $[\emptyset \text{ is chain}]$, or we can keep $X\neq \emptyset$ and every chain $C\subseteq X$, $C\neq\emptyset$ has a supremum.
 	\item All of this can be reversed: 
 		Let $(X,\le)$ be a poset.
 		$D\subseteq X$ is called {\em directed}: $\forall_{x,y \in D} \exists_{z\in D}(x\le z \land y\le z)$.
@@ -213,10 +213,10 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\item A maximal element of a directed subset is also its greatest element.
 	\item $X$ {\em directed complete}: every directed subset $D\subseteq X$, with $D\neq \emptyset$, $D$ has a supremum in $X$, we write the supremum as $\bigvee D$.
 	\item {\em dcpo}: directed complete partial order.
-	\item $V$ Vectorspace, $S$ Subspace. $V, S =\{ W\colon W\le V\}$ is a dcpo with $\le$ as partial order with $V$ as $V$. Exercise!
+	\item $V$ Vectorspace, $S$ Subspace. $V, S =\{ W\colon W\le V\}$ is a dcpo with $\subseteq$ as partial order with $V$ as $V$. Exercise!
 	
-	\item A subset of a dcpo $X$ is {\em closed} if $\bigvee D\in S$ for all $D\subseteq S$ non-empty directed subset.
-	\item $S$ is closed subset of the dcpo $(\mathbb P, \subseteq)$
+	\item A subset $S$ of a dcpo $X$ is {\em closed} if $\bigvee D\in S$ for all $D\subseteq S$ non-empty directed subset.
+	\item $S$ is closed subset of the dcpo $(\mathbb P(V), \subseteq)$
 	\item Here follow two equivalent formulations of Zorn's Lemma:
 	\begin{itemize}
 		\item Every dcpo $X\neq \emptyset$ has a maximal element
@@ -264,7 +264,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	\end{enumerate}
 	\begin{proof}
 		nur (a). Es sei $D\subseteq X$ gerichtet mit $D\subseteq F$.
-		Zu Zeigen: $\bigcup D\in F$. 
+		Zu Zeigen: $\bigvee D=\bigcup D\in F$. 
 		Es sei $T=\bigcup D$ und $T_0\subseteq T$, $T_0$ endl.
 		Dazu gibt es endl. $D_0\subseteq D$ mit $T_0\subseteq\bigcup D_0$.
 		Da $D$ gerichtet ist, hat $D_0$ eine obere Schranke $R\in D$.
@@ -274,7 +274,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 
 \begin{definition}
 	Sei $X$ wieder ein dcpo, $G\subseteq X$.
-	$G$ progressiv, wenn $\forall_{x\in X} [\forall_{y>x}(y\in G)\to x\in G$
+	$G$ progressiv, wenn $\forall_{x\in X} [\forall_{y>x}(y\in G)\to x\in G]$
 \end{definition}
 
 \begin{definition}[Offene Induktion (OI)]
@@ -358,7 +358,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 \begin{example}
 	\begin{enumerate}[(a)]
 		\item $S$ Menge; $a\lhd U \equiv a\in U$, d.h. $U^\lhd=U$; Dann $\lhd$ unitär und jedes $U\subseteq S$ ist unabhängig.
-		\item $S$ Vektorraum; $U^\lhd=(U)$ der von $U$ erzeugte Untervektorraum. $\lhd$ unitär; ``(un)abhängig'' ist ``linear (un)abhängig'' (!)
+		\item $S$ Vektorraum; $U^\lhd=(U)$ der von $U$ erzeugte Untervektorraum. $\lhd$ finitär; ``(un)abhängig'' ist ``linear (un)abhängig'' (!)
 		\item $R\subseteq S$ komm. Ringe; für $U\subseteq S$ sei $R[U]$ die {\em Ringadjunktion} von $U$ an $R$ in $S$, d.h.
 			\[ R[U]= \bigcup_{n\ge 0} \{ f(u_1,\ldots,u_n)\colon f\in R[X_1,\ldots,X_n]; u_1,\ldots, u_n \in U\} \]
 			$U^\lhd = \bar{ R[U] }^S$ ganzer Abschluß von $R[U]$ in $S$, d.h. $a\lhd U\iff a^n = r_1a^{n-1}+\ldots+r_{n-1} a + r_n$ für geeignete $n\ge 1$; $r_1,\ldots,r_n\in R[U]$.
@@ -382,7 +382,7 @@ Let $(X,\le)$ be a poset, $S\subseteq X$, $x\in X$.
 	$U$ maximal unabhängig $\iff$ $U$ Basis
 	\begin{proof}
 		``$\Rightarrow$`` (gilt i.a. nicht für $\lhd$ nur Überdeckungsrelation):
-		Zeige: (*) $\land$ $S\nlhd U \to U \text{ abhängig}$.
+		Zeige: (*) $\land$ $S\ntriangleleft U \to U \text{ abhängig}$.
 		Nehme $b\in S$ mit $b\nlhd U$.
 		Speziell $b\notin U$, d.h. $U\subsetneq U\cup \{b\}$.
 		Nach (*) ist $U\cup \{b\}$ abhängig, d.h. es gibt $a\in U\cup \{b\}$ mit $a\lhd (U\cup \{b\})-\{a\}$.
@@ -485,10 +485,10 @@ $\bar{V}=\bigcup\{\codom(\varphi')\mid \varphi'\in D\}$; klar: $\bar{\varphi}$ b
 Zeige: $\bar{V}\cup(U\backslash\bar{U})$ ist unabhängig. Erinnerung: ``Unabhängig'' von endl. Char. Ist $F\subseteq \bar{V}\cap(U\backslash\bar{U})$,
 $F$ endlich, so gibt es (da $D$ gerichtet) $\varphi':U'\rightarrow V'$ mit $\varphi'\in D$ und $F\subseteq \underbrace{V'\cup(U\backslash
   U')}_{\mbox{unabh.}}$, also $F$ unabhängig. Nach ZL hat $X$ ein maximales Element $\varphi^*:U^*\rightarrow V^*$. Noch zu zeigen: $U^*=U$. Annahme
-$U^*\subsetneq U$. Nehme $u\in U\backslash U^*$. Nun: $R^*=V^*\cup(U\backslash U^*)$. $R^*$ unabängig (da $\varphi^*\in X$), also $V\not\lhd
-R^*\backslash\{u\}$ [sonst $u\lhd R^*\backslash\{u\}$ (da $U\lhd V$; Transitivität)], etwa $v\in V$ mit $v\not\lhd R^*\backslash\{u\}$. Betrachte
+$U^*\subsetneq U$. Nehme $u\in U\backslash U^*$. Nun: $R^*=V^*\cup(U\backslash U^*)$. $R^*$ unabängig (da $\varphi^*\in X$), also $V\nlhd
+R^*\backslash\{u\}$ [sonst $u\lhd R^*\backslash\{u\}$ (da $U\lhd V$; Transitivität)], etwa $v\in V$ mit $v\nlhd R^*\backslash\{u\}$. Betrachte
 $R^{**})=(V^*\cup\{v\})\cup(U\backslash(U^*\cap\{u\}))=(R^*\backslash\{u\})\cup\{v\}$. $R^{**}$ ist unabhängig, das heißt $\forall_{r\in
-  R^{**}}(r\not\lhd R^{**}\backslash\{r\})$ [sonst, etwa $r\in R^\{**\}$ mit $r\lhd R^{**}\backslash\{r\}$, dann $r\neq v$ ($r=v: v\lhd
+  R^{**}}(r\nlhd R^{**}\backslash\{r\})$ [sonst, etwa $r\in R^\{**\}$ mit $r\lhd R^{**}\backslash\{r\}$, dann $r\neq v$ ($r=v: v\lhd
   R^{**}\backslash\{v\}=R^*\backslash\{u\}$ $\lightning$), also $r\in R^*\backslash\{u\}$, aber $r\lhd R^{**}\backslash\{r\}$ heißt damit $r\lhd
   (R^*\backslash\{u,r\})\cup\{v\}$, weshalb $r\lhd R^*\backslash\{r\}$ $\lightning$ ($R^*$ unabhängig) oder
   $v\lhd(R^*\backslash\{u,r\})\cup\{r\}=R^*\backslash\{u\}$ $\lightning$]. Also wäre $\varphi^{**}:U^*\cup\{u\}\rightarrow V^*\cup\{v\}$ mit
@@ -573,7 +573,7 @@ Zurück zum kommutativen Ring $R$. $\Max(R)$ ist die Menge der maximalen Ideale 
 \end{remark}
 
 \begin{definition}
-  $\Jac(R) = \{x\in R\mid \forall_{y\in R} (1-xy\in R^\times)\}$ {\bf Jacobi-Radikal} von $R$
+  $\Jac(R) = \{x\in R\mid \forall_{y\in R} (1-xy\in R^\times)\}$ {\bf Jacobson-Radikal} von $R$
 \end{definition}
 
 \begin{theorem}
@@ -624,7 +624,7 @@ Beweis mit OI und folgendem Lemma.
     \item[b.] $G$ antimonoton $\Rightarrow$ $G$ offen.
   \end{itemize}
   wobei $F$ {\bf monoton}, wenn $F\ni x\le y\Rightarrow y\in F$, $(x\le y \Rightarrow (x\in F\Rightarrow y\in F))$, $G$ {\bf antimonoton}, wenn $x\le
-  y\in G\Rightarrow x\in G$, $(x\le y\Rightarrow (x\in F\Leftarrow y\in F))$
+  y\in G\Rightarrow x\in G$, $(x\le y\Rightarrow (x\in G\Leftarrow y\in G))$
 \end{lemma}
 
 \begin{proof}[Beweis Lemma]
@@ -690,7 +690,7 @@ $\bar{\mathbb{Q}}\subsetneq\mathbb{C}$, zum Beispiel $\pi, e\not\in\mathbb{C}\ba
   Behauptung: $1\not\in I$. Beweis: $1\in I\rightarrow 1=_{(*)}\sum\limits_{i=1}^r g_i f_i(X_{f_i})$, $g_i\in P$. Nach Lemma gibt es Körper
   $L\supseteq K$ und $x_1,\ldots,x_r\in L$ mit $f_i(x_i)=0$. Setze $x_i$ ein für $X_{f_i}$ ein (*). Dann $1=\sum\tilde{g_i}f_i=0$ in $L$ $\lightning$.
 
-  $E_i=P/M$ ist Körper, $E_1\supseteq K$ wegen $P\supseteq K$. Wegen $P=K[\{X_f\mid f\in\Lambda\}]$ ist $E_1=K[\{x_f:f\in\Lambda\}]$ mit $x_f=X_f+M\in
+  Sei $M$ maximales Ideal über $I$. $E_1=P/M$ ist Körper, $E_1\supseteq K$ wegen $P\supseteq K$. Wegen $P=K[\{X_f\mid f\in\Lambda\}]$ ist $E_1=K[\{x_f:f\in\Lambda\}]$ mit $x_f=X_f+M\in
   E_1$. Wegen $M\supseteq I$ ist $f(x_f) = f(X_f)\mod M = 0\mod M$ für $f\in\Lambda$. Nun wiederhole das Verfahren. Konstruiere Körper $K=E_0\subseteq
   E_1\subseteq E_2\subseteq \ldots$ wie folgt: Zu $E_n$ konstruiere $E_{n+1}$ ``wie $E_1$ zu $K$''. Damit ist $E_{n+1}|E_n$ algebraisch, und jedes
   $h\in E_n[T]\backslash E_n$ hat Nullstelle in $E_{n+1}$. Insgesamt ist $\bar{K}=\bigcup\limits_{n\ge 0}E_n$ ein Körper: Alle $E_n|K$ algebraisch,
@@ -715,14 +715,14 @@ A[T_1,\ldots,T_n],s_1,\ldots,s_n\in S\}$ {\bf Ringadjunktion} von $S$ an $A$ in 
 
 \begin{theorem}[Schwache Form des HNS]
   Es sei $K$ ein Körper, $K$ algebraisch abgeschlossen. Für $f_1,\ldots,f_m\in K[T_1,\ldots,T_n]$ sei $I=(f_1,\ldots,f_m)$ in
-  $R=K[T_1,\ldots,T_n]$. Ist $I\neq R$, so gibt es $t\in k^n$ mit $f_i(t)=0$ für alle $i\in\{1,\ldots,m\}$.
+  $R=K[T_1,\ldots,T_n]$. Ist $I\neq R$, so gibt es $t\in K^n$ mit $f_i(t)=0$ für alle $i\in\{1,\ldots,m\}$.
 \end{theorem}
 
 \begin{proof}[Beweis mit ZL]
   Wegen $I\neq R$ gibt es ein maximales Ideal $M$ mit $M\supseteq I$. Nun betrachte $M(t)=(T_1-t_1,\ldots,T_n-t_n)$ in $R$ für $t=(t_1,\ldots,t_n)\in
   K^n$, wofür $M(t)\in\Max(R)$ [$R \twoheadrightarrow_{\alpha_t} k, f\mapsto f(t)$ mit $\Ker(\alpha_t)\supseteq M(t)$, sogar $=$ (!).]
 
-  Zu $M\in\Max(R)$ gibt es $t\in k^n$ mit $M=M(t)$ [siehe unten!]. Aus $M(t)=M\supseteq I\ni f_1,\ldots,f_m$ folgt $f_i(t)=0$ für alle $i\le m$.
+  Zu $M\in\Max(R)$ gibt es $t\in K^n$ mit $M=M(t)$ [siehe unten!]. Aus $M(t)=M\supseteq I\ni f_1,\ldots,f_m$ folgt $f_i(t)=0$ für alle $i\le m$.
 
   Es sei $M\in\Max(R)$. Dann ist $R/M$ Körper, $R/M=K[\bar{T_1},\ldots,\bar{T_n}]$ mit $\bar{T_i}=T_i+M$ in $R/M$, also $R/M$ algebraisch über $K$,
   somit $K=R/M$, das heißt $k\rightarrow R \twoheadrightarrow R/M$ ist Isomorphismus. Zu $\bar{T_i}\in R/M$ gibt es also $\bar{t_i}=\bar{T_i}$ in
@@ -732,16 +732,17 @@ A[T_1,\ldots,T_n],s_1,\ldots,s_n\in S\}$ {\bf Ringadjunktion} von $S$ an $A$ in 
 {\bf Alternativ mit Beweismuster.} $X=\{\mbox{Echte Ideale in }R\}$, $G=\{I\in X\mid\exists_{t\in K^n}(M(t)\supseteq I)\}$, $G$
 antimonoton. $\Max(X)\subseteq G \underbrace{\Rightarrow}_{OI} G=X$.
 
-%% 11. Juli 2013
-
 \subsection{Primideale}
+
+\marginpar{\tiny{11.07.2013}}
 
 $p\in\mathbb{Z}\backslash\{0,-1,1\}$ heißt {\bf Primzahl}, wenn $p|ab\Rightarrow p|a \vee p|b$. Nun sei $R$ ein kommutativer Ring. Ideal $I$ von $R$
 heißt {\bf Primideal}, wenn $1\not\in I$ und $ab\in I\Rightarrow a\in I \vee b\in I$. Zum Beispiel ist $(p)$ Primideal von $\mathbb{Z}$ genau dann,
 wenn $p=0$ oder $p$ Primzahl. $S\subseteq R$ {\bf multiplikativ} oder {\bf Monoid}, wenn $1\in S$ und $a\in S\wedge b\in S\Rightarrow ab\in S$. Für
 jedes Ideal $P$ von $R$: $P$ Primideal $\Leftrightarrow$ $R\backslash P$ Monoid. Weiter sind Monoide $\{1\},R^*,\left<a\right>=\{a^n\mid n\ge 0\},
-S+I=\{s+x\mid s\in S,x\in I\}$ falls $S$ Monoid, $I$ Ideal: $(s+x)(t+y) = \underbrace{st}_{\in S}+\underbrace{sy+xt+xy}_{\in I}$. $0$ Primideal
-$\Leftrightarrow$ $R$ {\bf Integritätsring}, das heißt $1\neq 0$ und $ab=0$ folgt $a=0\vee b=0$. Allgemein ist ein Ideal $P$ Primideal genau dann,
+S+I=\{s+x\mid s\in S,x\in I\}$ falls $S$ Monoid, $I$ Ideal: $(s+x)(t+y) = \underbrace{st}_{\in S}+\underbrace{sy+xt+xy}_{\in I}$.
+
+$0$ Primideal $\Leftrightarrow$ $R$ {\bf Integritätsring}, das heißt $1\neq 0$ und $ab=0$ folgt $a=0\vee b=0$. Allgemein ist ein Ideal $P$ Primideal genau dann,
 wenn $R/P$ Integritätsring. Ferner: Ein Ideal $M$ von $R$ ist maximal genau dann, wenn $R/M$ Körper.
 
 {\bf Speziell} $\Max(R)\subseteq\Spec(R)$, wobei $\Spec(R)=\{P\underbrace{\subseteq}_{(*)} R\mid P\mbox{ Primideale}\}$ {\bf Maximal-/Primspektrum} von
@@ -784,7 +785,7 @@ $R$. (*) wird gleich gezeigt.
 Es gilt: $\sqrt{I}\ni a \Leftrightarrow I\between\left<a\right>$.
 
 \begin{corollary}
-  Für jedes Ideal $I$ gilt: $\sqrt{I}=\bigcap\{P\in\Spec(R)\mid P\supseteq I\}$. Speziell für $I=0$: $\sqrt{I}=\bigcap\Spec(R)$.
+  Für jedes Ideal $I$ gilt: $\sqrt{I}=\bigcap\{P\in\Spec(R)\mid P\supseteq I\}$. Speziell für $I=\{0\}$: $\sqrt{0}=\bigcap\Spec(R)$.
 \end{corollary}
 
 \begin{proof}{Korollar mit Satz}
@@ -851,7 +852,7 @@ Wende Beweismuster auf $X=\uparrow F$ an mit $\cap$ als $\wedge$.
 \begin{proof}[Beweis mit Beweismuster, also mit OI]
   In (§) ist $\subseteq$ klar. Zu $\supseteq$ sei $a\in\bigcap\{G\in\uparrow F\mid G\mbox{ irreduzibel}\}$. Zeige: $a\in F$, das heißt
   $\forall_{G\in\uparrow F}(a\in G)$. Also ist zu zeigen: $T=X$ mit $T=\{G\in X\mid a\in G\}$ und $X=\uparrow F$. Nun ist $X$ dcpo mit $\cap$; $T$ ist
-  $\cap$-abgeschlossen und $T$ offen: Ist $\bigcup D\in T$, das heißt $a\in\bigcup D$, so ist $a\in G$ für ein $G\in D$, das heißt $a\in\bigcup D$, so
+  $\cap$-abgeschlossen und $T$ offen: Ist $\bigcup D\in T$, das heißt $a\in\bigcup D$, so
   ist $a\in G$ für ein $G\in D$, das heißt $G\in T$ für ein $G\in D$, also $D\between T$ gilt für alle $D\subseteq X$. Nach Voraussetzung an $a$ gilt
   $G\in T$ für alle irreduziblen $G\in X$. Mit Beweismuster ergibt sich $\forall_{G\in X}(G\in T)$, das heißt $T=X$.
 \end{proof}
@@ -868,7 +869,7 @@ Wende Beweismuster auf $X=\uparrow F$ an mit $\cap$ als $\wedge$.
   \begin{itemize}
     \item {\bf Weakening}. $ab\lhd a$ und $ab\lhd b$ für alle $a,b\in S$ (wobei $x\lhd y \equiv x\lhd\{y\}$, sowie $ab\equiv a\circ b$).
     \item {\bf Weak Right}. $(U,a)^\lhd\cap (U,b)^\lhd\subseteq (U,ab)^\lhd$, das heißt $x\lhd U, a$ und $x\lhd U,b$ $\Rightarrow$ $x\lhd U,ab$ für
-      alle $x,a,b\in S$, $U\subseteq S$ (wobei $U,c$ stehe für $U\cap\{c\}$).
+      alle $x,a,b\in S$, $U\subseteq S$ (wobei $U,c$ stehe für $U\cup\{c\}$).
   \end{itemize}
 \end{gelaber}
 
@@ -907,6 +908,8 @@ $\sqrt{(U,a)}\cap\sqrt{(U,b)}\subseteq\sqrt{(U,ab)}$.
   Für $x\in\sqrt{(U,a)}\cap\sqrt{(U,b)}$, etwa $x^k\in(U,a),x^l\in(U,b)$, etwa $x^k=u+ra,x^l=v+tb$ mit $u,v\in U$, ist
   $x^{k+l}=(u+ra)(v+tb)=\underbrace{uv+utb+rav}_{\in(U)}+rtab\in(U,ab)$, also $x\in\sqrt{(U,ab)}$.
 \end{proof}
+
+\marginpar{\tiny{18.07.2013}}
 
 Hier sind die (eigentlichen) Ideale bezüglich $\lhd$ genau die (echten) Radikalideale von $R$. Ferner sind die eigentlichen Primideale bezüglich
 $\lhd,\circ$ genau die Primideale von $R$. Also gilt $\sqrt{F}=\bigcap\{P\in\Spec(R):P\supseteq F\}$ (Korollar zum Satz von Krull).
@@ -960,7 +963,7 @@ $\lhd,\circ$ genau die Primideale von $R$. Also gilt $\sqrt{F}=\bigcap\{P\in\Spe
 
 \begin{theorem}
   Ein $P\subseteq K$ ist ein Kegel genau dann, wenn die Relation $\le$ definiert durch $a\le b :\Leftrightarrow b-a\in P$ eine {\bf Präordnung} oder
-  {\bf Quasiordnung} ist (das heißt reflexiv und transitiv), für die gilt: $a\le b\Rightarrow a+c\le b+c$, $a\le b \, \& \, c\ge 0\Rightarrow ac\le
+  {\bf Quasiordnung} ist (das heißt reflexiv und transitiv), für die gilt: $a\le b\Rightarrow a+c\le b+c$, $a\le b \land c\ge 0\Rightarrow ac\le
   bc$. Mit $\le$ zu $P$ wie oben ist $P=\{x\in K\mid x\ge 0\}$.
 \end{theorem}
 
@@ -968,7 +971,7 @@ Nun schreibe $-P = \{-x\mid x\in P\}=\{x\mid -x\in P\}$.
 
 \begin{definition}
   Eine {\bf Ordnung} auf $K$ ist eine Präordnung, die {\bf linear} beziehungsweise {\bf total} ist, das heißt $x\le 0$ oder $x\ge 0$ für $x\in K$
-  ({\bf Dichotomie}), und für die gilt, dass sie auch {\bf antisymmetrisch} ist, das heißt $x\le 0\,\&\,x\le 0\Rightarrow x=0$ für $x\in K$.
+  ({\bf Dichotomie}), und für die gilt, dass sie auch {\bf antisymmetrisch} ist, das heißt $x\le 0 \land x\ge 0\Rightarrow x=0$ für $x\in K$.
 \end{definition}
 
 Mit $P$ zu $\le$ wie oben gilt: Antisymmetrie $\Leftrightarrow$ $P\cap -P=\{0\}$ (entscheidend: $\subseteq$), Dichotomie $\Leftrightarrow$ $P\cup -P =
@@ -1005,7 +1008,7 @@ die eigentlichen Ideale sind genau die Präordnungen mit $-1\not\in P$.
 
 Der universelle Satz von Krull-Lindenbaum hat hier die folgende Form, wobei $K$ ein Körper mit $\Char(K)\neq 2$ sei:
 
-$$ \bigcap\limits_{\tiny \begin{array}{c}{O\supseteq O} \\ {O\mbox{ Ordnung von } K}\end{array}} O \subseteq P $$
+$$ \bigcap\limits_{\tiny \begin{array}{c}{O\supseteq P} \\ {O\mbox{ Ordnung von } K}\end{array}} O \subseteq P $$
 
 wobei $P$ Präordnung auf $K$.
 
